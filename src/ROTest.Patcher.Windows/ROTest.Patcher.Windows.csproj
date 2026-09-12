@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><UseWindowsForms>true</UseWindowsForms><EnableWindowsTargeting>true</EnableWindowsTargeting><AssemblyName>ROTest Patcher</AssemblyName><Version>1.0.0</Version><PublishSingleFile>true</PublishSingleFile><IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract><SelfContained>true</SelfContained><RuntimeIdentifier>win-x64</RuntimeIdentifier><DebugType>none</DebugType></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../ROTest.Patcher.Core/ROTest.Patcher.Core.csproj" /><EmbeddedResource Include="release-public.pem" /></ItemGroup>
+</Project>

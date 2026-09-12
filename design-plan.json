@@ -1,0 +1,16 @@
+{
+  "goal":"Standalone Windows patcher for the existing ROTest client, without distributing the full game or credentials",
+  "approved":"Owner approved public chiniji777/rotest-patcher repository, GitHub Releases, changed-files updates, backups/recovery, start-game and graphics-setup buttons",
+  "architecture":".NET 8 WinForms self-contained Windows x64 application with a dependency-free updater core. RSA-PSS signed manifests pin HTTPS assets owned by this GitHub repository. Mutable channel pointer selects immutable versioned files.",
+  "sourceIsolation":"New empty repository; do not modify FINN production or Assassin Trainer",
+  "privateSigningKey":"Generated outside repository, never embedded, uploaded, logged or committed; public verifier key is embedded",
+  "limits":{"manifestBytes":262144,"fileBytes":16777216,"totalPatchBytes":67108864,"maxFiles":64},
+  "filePolicy":"Allow only data/, System/, SystemEN/, graphics-setup-docs/ and opensetupl.exe; reject traversal, alternate streams, reserved Windows names, case-insensitive duplicates and reparse points. The first release does not update ROTest.exe or the running patcher.",
+  "recovery":"Download and verify all changed files first; retain originals and a durable transaction journal; replace files atomically; recover unfinished transactions on next start; rollback refuses to overwrite unrelated manual edits and pauses the rolled-back release.",
+  "tasks":[
+    {"name":"Core","files":["src/ROTest.Patcher.Core/Updater.cs","tests/ROTest.Patcher.Tests/Program.cs"],"steps":["Write failing tests for signed manifest tampering, unsafe paths, differential downloads, corrupt downloads, active game and rollback", "Implement validation, staging, durable journal and recovery", "Run real filesystem tests on macOS and Windows"]},
+    {"name":"Windows UI","files":["src/ROTest.Patcher.Windows/Program.cs"],"steps":["Add automatic startup update plus manual update, Start, Graphics Setup, Roll Back and folder picker", "Disable conflicting actions while updating and block active game updates", "Show version, progress, useful failure and recovery status; do not ask for or save game passwords", "Verify UI controls and a real update/relaunch on Windows"]},
+    {"name":"Release pipeline","files":["tools/release.mjs"],"steps":["Build payload from explicit public networking XMLs, verified skill callback fix and original OpenSetup executable/licenses", "Sign exact manifest bytes; publish assets and detached public channel envelope only", "Run tampering and corrupted-download tests", "Publish self-contained ZIP, source commit and hashes; install on Windows Desktop without touching game data", "Post downloadable patcher in existing ROTest Discord channel and verify download hash"]}
+  ],
+  "verificationBoundary":"Core tests do not prove all game actions; preserve the existing known limitation that complete ROTest skill/action and Assassin Trainer compatibility acceptance is unfinished. Initial EXE lacks a purchased Authenticode certificate; never disable antivirus to install it."
+}
