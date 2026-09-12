@@ -22,6 +22,10 @@ await Test("signed update downloads only changed files and preserves other files
     Assert(result.Changed==1 && f.Read("data/clientinfo.xml")=="new" && f.Read("data/unchanged.txt")=="keep" && f.Requests==1);
     var second=await f.Updater().UpdateAsync(envelope); Assert(second.Changed==0 && f.Requests==1);
 });
+await Test("client folder with trailing separator supports the normal launcher location",async f=>{
+    var result=await f.Updater(f.Root+Path.DirectorySeparatorChar).UpdateAsync(f.Envelope(f.File("data/a.txt","new")));
+    Assert(result.Changed==1&&f.Read("data/a.txt")=="new");
+});
 await Test("tampered signature cannot change client files",async f=>{
     f.Write("data/a.txt","old");var e=JsonSerializer.Deserialize<SignedEnvelope>(f.Envelope(f.File("data/a.txt","new")),Fixture.Json)!;
     var bytes=Convert.FromBase64String(e.Signature);bytes[0]^=1;
@@ -33,6 +37,11 @@ await Test("corrupt download changes no originals",async f=>{
     var a=f.File("data/a.txt","new-a");var b=f.File("data/b.txt","new-b");f.Assets[new Uri(b.Url).AbsolutePath]=Encoding.UTF8.GetBytes("wrong");
     await Reject(()=>f.Updater().UpdateAsync(f.Envelope(a,b)));
     Assert(f.Read("data/a.txt")=="old-a"&&f.Read("data/b.txt")=="old-b");
+});
+await Test("cancellation after the first replacement restores all original files",async f=>{
+    f.Write("data/a.txt","old-a");f.Write("data/b.txt","old-b");using var cancel=new CancellationTokenSource();var u=f.Updater();u.Progress=s=>{if(s.StartsWith("Installing ",StringComparison.Ordinal))cancel.Cancel();};
+    bool cancelled=false;try{await u.UpdateAsync(f.Envelope(f.File("data/a.txt","new-a"),f.File("data/b.txt","new-b")),cancellation:cancel.Token);}catch(OperationCanceledException){cancelled=true;}
+    Assert(cancelled&&f.Read("data/a.txt")=="old-a"&&f.Read("data/b.txt")=="old-b");await f.Updater().RecoverAsync();Assert(f.Read("data/a.txt")=="old-a");
 });
 await Test("unsafe paths and Windows aliases are rejected before downloading",async f=>{
     foreach(var path in new[]{"../outside.txt","data/../../escape","data/CON.txt","data/a:stream","data/a.","data//a","data\\a","/data/a",".rotest-patcher/state.json","ROTest.exe"})
@@ -68,8 +77,33 @@ await Test("interrupted transaction restores from a durable journal",async f=>{
     f.Write(".rotest-patcher/transactions/interrupted/journal.json",JsonSerializer.Serialize(journal,Fixture.Json));
     await f.Updater().RecoverAsync();Assert(f.Read("data/a.txt")=="old");
 });
+await Test("interrupted manual rollback finishes and preserves release pause",async f=>{
+    f.Write("data/a.txt","old-a");f.Write("data/b.txt","new-b");
+    f.Write(".rotest-patcher/transactions/interrupted-rollback/files/data/a.txt","old-a");f.Write(".rotest-patcher/transactions/interrupted-rollback/files/data/b.txt","old-b");
+    var journal=new {status="rollingback",rollbackPause=true,sequence=1,version="1.1",previousSequence=0,previousVersion="",entries=new[]{new {path="data/a.txt",existed=true,originalHash=Fixture.Hash("old-a"),newHash=Fixture.Hash("new-a")},new {path="data/b.txt",existed=true,originalHash=Fixture.Hash("old-b"),newHash=Fixture.Hash("new-b")}}};
+    f.Write(".rotest-patcher/transactions/interrupted-rollback/journal.json",JsonSerializer.Serialize(journal,Fixture.Json));
+    await f.Updater().RecoverAsync();Assert(f.Read("data/a.txt")=="old-a"&&f.Read("data/b.txt")=="old-b");
+    var result=await f.Updater().UpdateAsync(f.Envelope(f.File("data/a.txt","new-a")));Assert(result.Paused&&f.Requests==0);
+});
+await Test("committed journal repairs stale high-water metadata after restart",async f=>{
+    f.Write("data/a.txt","new");
+    var journal=new {status="committed",sequence=2,version="1.2",intendedState=new {sequence=2,highestSequence=2,pausedSequence=0,version="1.2",transactionId="finished",revision=2},entries=Array.Empty<object>()};
+    f.Write(".rotest-patcher/transactions/finished/journal.json",JsonSerializer.Serialize(journal,Fixture.Json));
+    await f.Updater().RecoverAsync();await Reject(()=>f.Updater().UpdateAsync(f.EnvelopeAt(1,f.File("data/a.txt","old"))));Assert(f.Read("data/a.txt")=="new");
+});
+await Test("rolled-back journal repairs lost pause metadata after restart",async f=>{
+    f.Write("data/a.txt","old");f.Write(".rotest-patcher/state.json",JsonSerializer.Serialize(new {sequence=2,highestSequence=2,pausedSequence=0,version="1.2",transactionId="finished"},Fixture.Json));
+    var journal=new {status="rolledback",sequence=2,version="1.2",intendedState=new {sequence=1,highestSequence=2,pausedSequence=2,version="1.1",transactionId="finished:rollback",revision=3},entries=Array.Empty<object>()};
+    f.Write(".rotest-patcher/transactions/finished/journal.json",JsonSerializer.Serialize(journal,Fixture.Json));
+    await f.Updater().RecoverAsync();var result=await f.Updater().UpdateAsync(f.EnvelopeAt(2,f.File("data/a.txt","new")));Assert(result.Paused&&f.Requests==0&&f.Read("data/a.txt")=="old");
+});
 await Test("rollback release is rejected when channel sequence goes backwards",async f=>{
     var file=f.File("data/a.txt","new");await f.Updater().UpdateAsync(f.EnvelopeAt(2,file));await Reject(()=>f.Updater().UpdateAsync(f.EnvelopeAt(1,file)));
+});
+await Test("two rollbacks followed by restart preserve the newest completed state",async f=>{
+    f.Write("data/a.txt","original");var u=f.Updater();await u.UpdateAsync(f.EnvelopeAt(1,f.File("data/a.txt","one")));await u.UpdateAsync(f.EnvelopeAt(2,f.File("data/a.txt","two")));
+    await u.RollbackAsync();await u.RollbackAsync();var before=f.Read(".rotest-patcher/state.json");
+    await f.Updater().RecoverAsync();Assert(f.Read("data/a.txt")=="original"&&f.Read(".rotest-patcher/state.json")==before);
 });
 await Test("symlink destination cannot escape client folder",async f=>{
     var outside=Path.Combine(f.Root,"outside");Directory.CreateDirectory(outside);Directory.CreateDirectory(Path.Combine(f.Root,"data"));
@@ -92,7 +126,7 @@ sealed class Fixture:IDisposable
     public PatchFile File(string path,string text){var url="https://github.com/chiniji777/rotest-patcher/releases/download/test/"+Guid.NewGuid().ToString("N");var b=Encoding.UTF8.GetBytes(text);Assets[new Uri(url).AbsolutePath]=b;return new(path,url,b.Length,Hash(text));}
     public byte[] Envelope(params PatchFile[] files)=>EnvelopeAt(1,files);
     public byte[] EnvelopeAt(long sequence,params PatchFile[] files){var bytes=JsonSerializer.SerializeToUtf8Bytes(new PatchManifest("ROTest-20211103",sequence,"1."+sequence,files),Json);return JsonSerializer.SerializeToUtf8Bytes(new SignedEnvelope(Convert.ToBase64String(bytes),Convert.ToBase64String(key.SignData(bytes,HashAlgorithmName.SHA256,RSASignaturePadding.Pss))),Json);}
-    public Updater Updater()=>new(Root,key.ExportSubjectPublicKeyInfoPem(),Hash("synthetic-game"),(uri,ct)=>client.GetByteArrayAsync("http://127.0.0.1:"+((IPEndPoint)listener.LocalEndpoint).Port+uri.AbsolutePath,ct),()=>Running);
+    public Updater Updater(string? selectedRoot=null)=>new(selectedRoot??Root,key.ExportSubjectPublicKeyInfoPem(),Hash("synthetic-game"),(uri,ct)=>client.GetByteArrayAsync("http://127.0.0.1:"+((IPEndPoint)listener.LocalEndpoint).Port+uri.AbsolutePath,ct),()=>Running);
     async Task Serve(){try{while(!stop.IsCancellationRequested){using var connection=await listener.AcceptTcpClientAsync(stop.Token);await using var stream=connection.GetStream();using var reader=new StreamReader(stream,leaveOpen:true);var request=await reader.ReadLineAsync();while(!string.IsNullOrEmpty(await reader.ReadLineAsync())){}var path=request!.Split(' ')[1];var found=Assets.TryGetValue(path,out var bytes);bytes??=[];Interlocked.Increment(ref Requests);var header=Encoding.ASCII.GetBytes($"HTTP/1.1 {(found?200:404)} OK\r\nContent-Length: {bytes.Length}\r\nConnection: close\r\n\r\n");await stream.WriteAsync(header);await stream.WriteAsync(bytes);}}catch(OperationCanceledException){}catch(ObjectDisposedException){}}
     public void Dispose(){stop.Cancel();listener.Stop();client.Dispose();key.Dispose();stop.Dispose();}
 }

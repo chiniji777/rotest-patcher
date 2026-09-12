@@ -1,4 +1,6 @@
 using System.Security.Cryptography;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 namespace ROTest.Patcher.Core;
@@ -16,10 +18,22 @@ public class Updater
     public Action<string>? Progress {get;set;}
     public Updater(string root, string publicKey, string expectedGameHash, Func<Uri,CancellationToken,Task<byte[]>> fetch, Func<bool> gameRunning)
     {
-        this.root=Path.GetFullPath(root);this.publicKey=publicKey;gameHash=expectedGameHash;
+        this.root=Path.TrimEndingDirectorySeparator(Path.GetFullPath(root));this.publicKey=publicKey;gameHash=expectedGameHash;
         this.fetch=fetch;this.gameRunning=gameRunning;store=Path.Combine(this.root,".rotest-patcher");
     }
     public static string Hash(byte[] bytes)=>Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+    [DllImport("kernel32.dll",CharSet=CharSet.Unicode,SetLastError=true)]
+    static extern bool MoveFileEx(string existing,string replacement,int flags);
+    static void AtomicMove(string source,string target)
+    {
+        if(OperatingSystem.IsWindows())
+        {if(!MoveFileEx(source,target,0x1|0x8))throw new Win32Exception(Marshal.GetLastWin32Error(),"Could not atomically replace an update file.");}
+        else File.Move(source,target,true);
+    }
+    static void DurableCopy(string source,string target)
+    {using var input=File.OpenRead(source);using var output=new FileStream(target,FileMode.CreateNew,FileAccess.Write,FileShare.None,32768,FileOptions.WriteThrough);input.CopyTo(output);output.Flush(true);}
+    static async Task DurableWrite(string path,byte[] bytes,CancellationToken cancellation)
+    {await using var stream=new FileStream(path,FileMode.CreateNew,FileAccess.Write,FileShare.None,32768,FileOptions.WriteThrough|FileOptions.Asynchronous);await stream.WriteAsync(bytes,cancellation).ConfigureAwait(false);stream.Flush(true);}
     static string FileHash(string file){using var s=File.OpenRead(file);return Convert.ToHexString(SHA256.HashData(s)).ToLowerInvariant();}
     void Busy(){if(gameRunning())throw new InvalidOperationException("Close ROTest before updating or restoring files.");}
     void NoLinks(string path)
@@ -78,7 +92,7 @@ public class Updater
         NoLinks(path);Directory.CreateDirectory(Path.GetDirectoryName(path)!);var temp=path+"."+Guid.NewGuid().ToString("N")+".new";
         using(var stream=new FileStream(temp,FileMode.CreateNew,FileAccess.Write,FileShare.None,4096,FileOptions.WriteThrough))
         {var bytes=JsonSerializer.SerializeToUtf8Bytes(value,Json);stream.Write(bytes);stream.Flush(true);}
-        File.Move(temp,path,true);
+        AtomicMove(temp,path);
     }
     T Read<T>(string path) where T:new()
     {NoLinks(path);if(!File.Exists(path))return new();if(new FileInfo(path).Length>MaxManifestBytes)throw new InvalidDataException("Local update record is too large.");return JsonSerializer.Deserialize<T>(File.ReadAllBytes(path),Json)??throw new InvalidDataException("Local update record is invalid.");}
@@ -96,6 +110,11 @@ public class Updater
             if(File.Exists(target)){var hash=FileHash(target);if(hash!=entry.NewHash&&hash!=entry.OriginalHash)throw new InvalidDataException("Manual changes found; recovery stopped without overwriting them: "+entry.Path);}
             if(entry.Existed){var backup=TxFile(transaction,"files",entry.Path);if(!File.Exists(backup)||FileHash(backup)!=entry.OriginalHash)throw new InvalidDataException("Recovery backup is missing or damaged: "+entry.Path);}
         }
+        var state=Read<InstalledState>(StateFile);
+        var rollbackRevision=journal.Status=="rollingback"&&journal.IntendedState is not null?journal.IntendedState.Revision:Math.Max(state.Revision,journal.IntendedState?.Revision??0)+1;
+        journal.RollbackPause=pause;
+        journal.IntendedState=new InstalledState{Sequence=journal.PreviousSequence,Version=journal.PreviousVersion,HighestSequence=Math.Max(Math.Max(state.HighestSequence,journal.Sequence),journal.IntendedState?.HighestSequence??0),PausedSequence=pause?journal.Sequence:journal.PreviousPausedSequence,TransactionId=Path.GetFileName(transaction)+":rollback",Revision=rollbackRevision};
+        journal.Status="rollingback";Save(Path.Combine(transaction,"journal.json"),journal);
         foreach(var entry in journal.Entries)
         {
             var target=Target(entry.Path);
@@ -103,18 +122,26 @@ public class Updater
             {
                 if(File.Exists(target)&&FileHash(target)==entry.OriginalHash)continue;
                 Directory.CreateDirectory(Path.GetDirectoryName(target)!);var temp=target+".restore-"+Guid.NewGuid().ToString("N");
-                File.Copy(TxFile(transaction,"files",entry.Path),temp);File.Move(temp,target,true);
+                DurableCopy(TxFile(transaction,"files",entry.Path),temp);AtomicMove(temp,target);
             }
             else if(File.Exists(target))
-            {var removed=TxFile(transaction,"removed",entry.Path);Directory.CreateDirectory(Path.GetDirectoryName(removed)!);File.Move(target,removed,true);}
+            {var removed=TxFile(transaction,"removed",entry.Path);Directory.CreateDirectory(Path.GetDirectoryName(removed)!);AtomicMove(target,removed);}
         }
+        Save(StateFile,journal.IntendedState);
         journal.Status="rolledback";Save(Path.Combine(transaction,"journal.json"),journal);
-        var state=Read<InstalledState>(StateFile);Save(StateFile,new InstalledState{Sequence=journal.PreviousSequence,Version=journal.PreviousVersion,HighestSequence=Math.Max(state.HighestSequence,journal.Sequence),PausedSequence=pause?journal.Sequence:0});
     }
     void RecoverInternal()
     {
+        InstalledState? terminalState=null;
         foreach(var transaction in Transactions())
-        {var journal=Read<Journal>(Path.Combine(transaction,"journal.json"));if(journal.Status is "prepared" or "applying"){Progress?.Invoke("Recovering interrupted update...");Restore(transaction,journal,false);}}
+        {
+            var journal=Read<Journal>(Path.Combine(transaction,"journal.json"));
+            if(journal.Status is "prepared" or "applying" or "rollingback")
+            {Progress?.Invoke("Recovering interrupted update...");Restore(transaction,journal,journal.Status=="rollingback"&&journal.RollbackPause);}
+            if(journal.Status is "committed" or "rolledback" && journal.IntendedState is not null && (terminalState is null || journal.IntendedState.Revision>terminalState.Revision))terminalState=journal.IntendedState;
+        }
+        var state=Read<InstalledState>(StateFile);
+        if(terminalState is not null&&terminalState.Revision>state.Revision)Save(StateFile,terminalState);
     }
     public Task RecoverAsync()
     {using var gate=Acquire();using var gameLock=new FileStream(Path.Combine(root,"ROTest.exe"),FileMode.Open,FileAccess.Read,FileShare.None);RecoverInternal();return Task.CompletedTask;}
@@ -131,7 +158,7 @@ public class Updater
         if(manifest.Sequence<state.HighestSequence)throw new InvalidDataException("An older release was offered. Update refused.");
         if(!force&&manifest.Sequence<=state.PausedSequence)return new(state.Version,0,true);
         var changed=manifest.Files.Where(f=>!File.Exists(Target(f.Path))||!FileHash(Target(f.Path)).Equals(f.Sha256,StringComparison.OrdinalIgnoreCase)).ToArray();
-        if(changed.Length==0){Save(StateFile,new InstalledState{Sequence=manifest.Sequence,HighestSequence=Math.Max(state.HighestSequence,manifest.Sequence),Version=manifest.Version});return new(manifest.Version,0);}
+        if(changed.Length==0){Save(StateFile,new InstalledState{Sequence=manifest.Sequence,HighestSequence=Math.Max(state.HighestSequence,manifest.Sequence),Version=manifest.Version,TransactionId=state.TransactionId,Revision=state.Revision+1});return new(manifest.Version,0);}
         var transaction=Path.Combine(store,"transactions",DateTime.UtcNow.ToString("yyyyMMddHHmmssfff")+"-"+Guid.NewGuid().ToString("N"));NoLinks(transaction);Directory.CreateDirectory(transaction);
         var entries=new List<JournalEntry>();
         foreach(var file in changed)
@@ -139,13 +166,14 @@ public class Updater
             cancellation.ThrowIfCancellationRequested();Progress?.Invoke("Downloading "+file.Path);
             var bytes=await fetch(new Uri(file.Url),cancellation).ConfigureAwait(false);
             if(bytes.LongLength!=file.Size||!Hash(bytes).Equals(file.Sha256,StringComparison.OrdinalIgnoreCase))throw new InvalidDataException("Downloaded file failed verification: "+file.Path);
-            var staged=TxFile(transaction,"staged",file.Path);Directory.CreateDirectory(Path.GetDirectoryName(staged)!);await File.WriteAllBytesAsync(staged,bytes,cancellation).ConfigureAwait(false);
+            var staged=TxFile(transaction,"staged",file.Path);Directory.CreateDirectory(Path.GetDirectoryName(staged)!);await DurableWrite(staged,bytes,cancellation).ConfigureAwait(false);
             var target=Target(file.Path);var existed=File.Exists(target);var original=existed?FileHash(target):"";
-            if(existed){var backup=TxFile(transaction,"files",file.Path);Directory.CreateDirectory(Path.GetDirectoryName(backup)!);File.Copy(target,backup);}
+            if(existed){var backup=TxFile(transaction,"files",file.Path);Directory.CreateDirectory(Path.GetDirectoryName(backup)!);DurableCopy(target,backup);if(FileHash(backup)!=original)throw new InvalidDataException("Backup verification failed: "+file.Path);}
             entries.Add(new(){Path=file.Path,Existed=existed,OriginalHash=original,NewHash=file.Sha256.ToLowerInvariant()});
         }
-        var journal=new Journal{Status="prepared",Sequence=manifest.Sequence,Version=manifest.Version,PreviousSequence=state.Sequence,PreviousVersion=state.Version,Entries=entries.ToArray()};
+        var journal=new Journal{Status="prepared",Sequence=manifest.Sequence,Version=manifest.Version,PreviousSequence=state.Sequence,PreviousVersion=state.Version,PreviousPausedSequence=state.PausedSequence,Entries=entries.ToArray(),IntendedState=new InstalledState{Sequence=manifest.Sequence,HighestSequence=Math.Max(state.HighestSequence,manifest.Sequence),Version=manifest.Version,TransactionId=Path.GetFileName(transaction),Revision=state.Revision+1}};
         Save(Path.Combine(transaction,"journal.json"),journal);
+        bool committed=false;
         try
         {
             Busy();cancellation.ThrowIfCancellationRequested();journal.Status="applying";Save(Path.Combine(transaction,"journal.json"),journal);
@@ -153,16 +181,17 @@ public class Updater
             {
                 Busy();cancellation.ThrowIfCancellationRequested();var target=Target(entry.Path);
                 if(File.Exists(target)?FileHash(target)!=entry.OriginalHash:entry.Existed)throw new InvalidDataException("Client file changed during update: "+entry.Path);
-                Progress?.Invoke("Installing "+entry.Path);Directory.CreateDirectory(Path.GetDirectoryName(target)!);File.Move(TxFile(transaction,"staged",entry.Path),target,true);
+                Progress?.Invoke("Installing "+entry.Path);Directory.CreateDirectory(Path.GetDirectoryName(target)!);AtomicMove(TxFile(transaction,"staged",entry.Path),target);
             }
+            Save(StateFile,journal.IntendedState);
             journal.Status="committed";Save(Path.Combine(transaction,"journal.json"),journal);
-            Save(StateFile,new InstalledState{Sequence=manifest.Sequence,HighestSequence=Math.Max(state.HighestSequence,manifest.Sequence),Version=manifest.Version});
+            committed=true;
             return new(manifest.Version,changed.Length);
         }
         catch
-        {if(journal.Status!="committed")Restore(transaction,journal,false);throw;}
+        {if(!committed)Restore(transaction,journal,false);throw;}
     }
-    public sealed class InstalledState {public long Sequence{get;set;} public long HighestSequence{get;set;} public long PausedSequence{get;set;} public string Version{get;set;}="";}
-    public sealed class Journal {public string Status{get;set;}="";public long Sequence{get;set;}public string Version{get;set;}="";public long PreviousSequence{get;set;}public string PreviousVersion{get;set;}="";public JournalEntry[] Entries{get;set;}=[];}
+    public sealed class InstalledState {public long Sequence{get;set;} public long HighestSequence{get;set;} public long PausedSequence{get;set;} public string Version{get;set;}="";public string TransactionId{get;set;}="";public long Revision{get;set;}}
+    public sealed class Journal {public string Status{get;set;}="";public long Sequence{get;set;}public string Version{get;set;}="";public long PreviousSequence{get;set;}public string PreviousVersion{get;set;}="";public long PreviousPausedSequence{get;set;}public bool RollbackPause{get;set;}public InstalledState? IntendedState{get;set;}public JournalEntry[] Entries{get;set;}=[];}
     public sealed class JournalEntry {public string Path{get;set;}="";public bool Existed{get;set;}public string OriginalHash{get;set;}="";public string NewHash{get;set;}="";}
 }
