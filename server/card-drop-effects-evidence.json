@@ -1,0 +1,28 @@
+{
+  "dateBangkok": "2026-09-13",
+  "scope": "ROTest only",
+  "engineCommit": "e985006171d2eb320ee512a653f4c83aea3d81b6",
+  "packetVersion": 20211103,
+  "dropEffect": "PURPLE_PILLAR",
+  "cardCount": 538,
+  "previousCustomItemsUnchanged": 100,
+  "itemDbSha256": "198e67138e34f6c3d4519897965800b70dd9c97ee3876ca2d25178b1af5c66e6",
+  "unitTests": {"passed": 29, "failed": 0, "newTestsRedBeforeGreen": 3},
+  "engineRunOnce": "passed with candidate import; no errors or invalid drop effects",
+  "liveReload": "game receipt and server log confirm 638 import entries loaded",
+  "visualAcceptance": {
+    "method": "temporary GM-only makeitem probe with canShowEffect=true through the same floor-item rendering path as fresh monster drops",
+    "normalCard": 4001,
+    "bossCard": 4147,
+    "controlItem": 501,
+    "result": "two purple pillars visible on cards; no pillar on ordinary control item",
+    "screenshotLocal": "/tmp/rotest-card-pillar-live.png"
+  },
+  "limits": [
+    "No forced monster drop or drop-rate alteration was used for acceptance.",
+    "Player-discarded inventory items follow the original server behavior and do not request drop effects.",
+    "Effects are set for future card drops; existing floor items are not recreated."
+  ],
+  "clientPatchRequired": false,
+  "backupRestoreVerified": "rotest_restore_20260913064651"
+}

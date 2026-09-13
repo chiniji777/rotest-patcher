@@ -1200,3 +1200,1617 @@ Body:
     View: 0
     Script: |
       bonus bMaxHPrate,5; bonus bMaxSPrate,5; if (getskilllv("AS_POISONREACT")>=10) bonus bBaseAtk,30; if (getskilllv("ASC_METEORASSAULT")>=10) bonus2 bSkillAtk,"ASC_BREAKER",25;
+  - Id: 4001
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4002
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4003
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4004
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4005
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4006
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4007
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4008
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4009
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4010
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4011
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4012
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4013
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4014
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4015
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4016
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4017
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4018
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4019
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4020
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4021
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4022
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4023
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4024
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4025
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4026
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4027
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4028
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4029
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4030
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4031
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4032
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4033
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4034
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4035
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4036
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4037
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4038
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4039
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4040
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4041
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4042
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4043
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4044
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4045
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4046
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4047
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4048
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4049
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4050
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4051
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4052
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4053
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4054
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4055
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4056
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4057
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4058
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4059
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4060
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4061
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4062
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4063
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4064
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4065
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4066
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4067
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4068
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4069
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4070
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4071
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4072
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4073
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4074
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4075
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4076
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4077
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4078
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4079
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4080
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4081
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4082
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4083
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4084
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4085
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4086
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4087
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4088
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4089
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4090
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4091
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4092
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4093
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4094
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4095
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4096
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4097
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4098
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4099
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4100
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4101
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4102
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4103
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4104
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4105
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4106
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4107
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4108
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4109
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4110
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4111
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4112
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4113
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4114
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4115
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4116
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4117
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4118
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4119
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4120
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4121
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4122
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4123
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4124
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4125
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4126
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4127
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4128
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4129
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4130
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4131
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4132
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4133
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4134
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4135
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4136
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4137
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4138
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4139
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4140
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4141
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4142
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4143
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4144
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4145
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4146
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4147
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4148
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4149
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4150
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4151
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4152
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4153
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4154
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4155
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4156
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4157
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4158
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4159
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4160
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4161
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4162
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4163
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4164
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4165
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4166
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4167
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4168
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4169
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4170
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4171
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4172
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4173
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4174
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4175
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4176
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4177
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4178
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4179
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4180
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4181
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4182
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4183
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4184
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4185
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4186
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4187
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4188
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4189
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4190
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4191
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4192
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4193
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4194
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4195
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4196
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4197
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4198
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4199
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4200
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4201
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4202
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4203
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4204
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4205
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4206
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4207
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4208
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4209
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4210
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4211
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4212
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4213
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4214
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4215
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4216
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4217
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4218
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4219
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4220
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4221
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4222
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4223
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4224
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4225
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4226
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4227
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4228
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4229
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4230
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4231
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4232
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4233
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4234
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4235
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4236
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4237
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4238
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4239
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4240
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4241
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4242
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4243
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4244
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4245
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4246
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4247
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4248
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4249
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4250
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4251
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4252
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4253
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4254
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4255
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4256
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4257
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4258
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4259
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4260
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4261
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4262
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4263
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4264
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4265
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4266
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4267
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4268
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4269
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4270
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4271
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4272
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4273
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4274
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4275
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4276
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4277
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4278
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4279
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4280
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4281
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4282
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4283
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4284
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4285
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4286
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4287
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4288
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4289
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4290
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4291
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4292
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4293
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4294
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4295
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4296
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4297
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4298
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4299
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4300
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4301
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4302
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4303
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4304
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4305
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4306
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4307
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4308
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4309
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4310
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4311
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4312
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4313
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4314
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4315
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4316
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4317
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4318
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4319
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4320
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4321
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4322
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4323
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4324
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4325
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4326
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4327
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4328
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4329
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4330
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4331
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4332
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4333
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4334
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4335
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4336
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4337
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4338
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4339
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4340
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4341
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4342
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4343
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4344
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4345
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4346
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4347
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4348
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4349
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4350
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4351
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4352
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4353
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4354
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4355
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4356
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4357
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4358
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4359
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4360
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4361
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4362
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4363
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4364
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4365
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4366
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4367
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4368
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4369
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4370
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4371
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4372
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4373
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4374
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4375
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4376
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4377
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4378
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4379
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4380
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4381
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4382
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4383
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4384
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4385
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4386
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4387
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4388
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4389
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4390
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4391
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4392
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4393
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4394
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4395
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4396
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4397
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4398
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4399
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4400
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4401
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4402
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4403
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4404
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4405
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4406
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4407
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4408
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4409
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4410
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4411
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4412
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4413
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4414
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4415
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4416
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4417
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4418
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4419
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4420
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4421
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4422
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4423
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4424
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4425
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4426
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4427
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4428
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4429
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4430
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4431
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4432
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4433
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4434
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4435
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4436
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4437
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4438
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4439
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4440
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4441
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4442
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4443
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4444
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4445
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4447
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4448
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4449
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4450
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4451
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4452
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4453
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4700
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4701
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4702
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4703
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4704
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4705
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4706
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4707
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4708
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4709
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4710
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4711
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4712
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4713
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4714
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4715
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4716
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4717
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4718
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4719
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4720
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4721
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4722
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4723
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4724
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4725
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4726
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4727
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4728
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4729
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4730
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4731
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4732
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4733
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4734
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4735
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4736
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4737
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4738
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4739
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4740
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4741
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4742
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4743
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4744
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4745
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4746
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4747
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4748
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4749
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4750
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4751
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4752
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4753
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4754
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4755
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4756
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4757
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4758
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4759
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4760
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4761
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4762
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4763
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4764
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4765
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4766
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4767
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4768
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4769
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4770
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4771
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4772
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4773
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4774
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4775
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4776
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4777
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4778
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4779
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4780
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4781
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4782
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4783
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4784
+    Flags:
+      DropEffect: PURPLE_PILLAR
+  - Id: 4785
+    Flags:
+      DropEffect: PURPLE_PILLAR

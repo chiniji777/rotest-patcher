@@ -1,5 +1,6 @@
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {execFileSync} from 'node:child_process';
 import {validateWearable} from './finn-wearables.mjs';
+import {appendCardDropEffects} from './card-drop-effects.mjs';
 const root=process.argv[2];if(!root)throw Error('ROTest root required');
 const repo=path.resolve(import.meta.dirname,'..'),out=path.join(repo,'artifacts/finn-wearables');fs.mkdirSync(out,{recursive:true});
 const recipes=JSON.parse(fs.readFileSync(path.join(repo,'server/finn-wearables-recipes.json'))),raw=fs.readFileSync(path.join(root,'finn-reference/itemInfo_true.lub'));
@@ -29,6 +30,7 @@ for(const i of items){
 }
 const groups=[['หมวก',items.filter(i=>i.location.startsWith('Head_'))],['รองเท้า',items.filter(i=>i.location==='Shoes')],['เครื่องประดับ',items.filter(i=>i.location==='Both_Accessory')]];
 const npc=['morocc,166,100,4\tscript\tร้าน FINN ทดสอบ#RT_FINN\t99,{','\tmes "[อุปกรณ์ FINN ฉบับทดสอบ]";',`\tmes "มี ${items.length} ชิ้น จำลองจากค่าที่ระบุชัดในไฟล์เกม";`,'\tmes "ยังไม่รับรองว่าดาเมจตรงเซิร์ฟเวอร์ FINN จริง";','\tmes "ชิ้นละ 1,000 Zeny ไม่ใช้เงินจริง";','\tmes "ของที่โอกาสออกสกิลหรือสูตรไม่ครบ ยังไม่เปิดขาย";','\t.@choice=select("หมวก:รองเท้า:เครื่องประดับ:ยกเลิก");','\tif (.@choice==4) close;','\tclose2;','\tcallshop "RT_FINN_"+(.@choice-1),1;','\tend;','OnInit:','\tif (!checkcell("morocc",166,100,CELL_CHKPASS)) debugmes "ROTEST_FINN BAD_CELL";',`\tdebugmes "ROTEST_FINN items=${items.length}";`,'\tend;','}',...groups.map(([label,rows],index)=>`-\tshop\tRT_FINN_${index}\t-1,${rows.map(i=>i.id+':1000').join(',')}`)];
-fs.writeFileSync(path.join(out,'item_db.yml'),database.join('\n')+'\n');fs.writeFileSync(path.join(out,'finn-wearables.utf8.txt'),npc.join('\n')+'\n');fs.writeFileSync(path.join(out,'finn-wearables.txt'),execFileSync('iconv',['-f','UTF-8','-t','CP874'],{input:npc.join('\n')+'\n'}));
+const cardSource=JSON.parse(execFileSync('ruby',['-rjson','-ryaml','-e','puts JSON.generate(YAML.safe_load(File.read(ARGV[0]))["Body"])',path.join(root,'finn-reference/standard-pre-re/item_db_etc.yml')],{encoding:'utf8',maxBuffer:16000000}));
+fs.writeFileSync(path.join(out,'item_db.yml'),appendCardDropEffects(database.join('\n')+'\n',cardSource));fs.writeFileSync(path.join(out,'finn-wearables.utf8.txt'),npc.join('\n')+'\n');fs.writeFileSync(path.join(out,'finn-wearables.txt'),execFileSync('iconv',['-f','UTF-8','-t','CP874'],{input:npc.join('\n')+'\n'}));
 fs.writeFileSync(path.join(out,'iteminfo.lua'),Buffer.concat([fs.readFileSync(path.join(repo,'artifacts/test-shops/iteminfo.lua')),execFileSync('iconv',['-f','UTF-8','-t','CP874'],{input:'\n'+clientPatch.join('\n')+'\n'})]));
 fs.writeFileSync(path.join(out,'ready.json'),JSON.stringify({items,held:recipes.held,sourceSha256:recipes.sourceSha256},null,2));console.log(JSON.stringify({items:items.length,held:recipes.held.length,output:out}));
