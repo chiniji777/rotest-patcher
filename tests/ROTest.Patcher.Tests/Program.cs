@@ -15,6 +15,9 @@ async Task Test(string name, Func<Fixture,Task> action)
 void Assert(bool condition) { if(!condition) throw new Exception("assertion failed"); }
 async Task Reject(Func<Task> action) { try {await action();} catch(InvalidOperationException) {return;} catch(InvalidDataException) {return;} catch(CryptographicException) {return;} throw new Exception("expected rejection"); }
 
+await Test("Thai update progress retains exact file path",f=>{Assert(ThaiText.Translate("Downloading data/clientinfo.xml")=="กำลังดาวน์โหลด data/clientinfo.xml");Assert(ThaiText.Translate("Installing System/itemInfo.lua")=="กำลังติดตั้ง System/itemInfo.lua");return Task.CompletedTask;});
+await Test("Thai errors explain active game and leave unknown diagnostics intact",f=>{Assert(ThaiText.Translate("Close ROTest before updating or restoring files.")=="กรุณาปิด ROTest ก่อนอัปเดตหรือกู้คืนไฟล์");Assert(ThaiText.Translate("new diagnostic 123")=="new diagnostic 123");return Task.CompletedTask;});
+
 await Test("signed update downloads only changed files and preserves other files",async f=>{
     f.Write("data/unchanged.txt","keep"); f.Write("data/clientinfo.xml","old");
     var envelope=f.Envelope(f.File("data/clientinfo.xml","new"),f.File("data/unchanged.txt","keep"));
@@ -104,6 +107,10 @@ await Test("two rollbacks followed by restart preserve the newest completed stat
     f.Write("data/a.txt","original");var u=f.Updater();await u.UpdateAsync(f.EnvelopeAt(1,f.File("data/a.txt","one")));await u.UpdateAsync(f.EnvelopeAt(2,f.File("data/a.txt","two")));
     await u.RollbackAsync();await u.RollbackAsync();var before=f.Read(".rotest-patcher/state.json");
     await f.Updater().RecoverAsync();Assert(f.Read("data/a.txt")=="original"&&f.Read(".rotest-patcher/state.json")==before);
+});
+await Test("rollback order remains correct when Windows regional calendar changes",async f=>{
+    var previous=System.Globalization.CultureInfo.CurrentCulture;
+    try{f.Write("data/a.txt","original");var u=f.Updater();System.Globalization.CultureInfo.CurrentCulture=System.Globalization.CultureInfo.GetCultureInfo("th-TH");await u.UpdateAsync(f.EnvelopeAt(1,f.File("data/a.txt","one")));System.Globalization.CultureInfo.CurrentCulture=System.Globalization.CultureInfo.GetCultureInfo("en-US");await u.UpdateAsync(f.EnvelopeAt(2,f.File("data/a.txt","two")));await u.RollbackAsync();Assert(f.Read("data/a.txt")=="one");}finally{System.Globalization.CultureInfo.CurrentCulture=previous;}
 });
 await Test("symlink destination cannot escape client folder",async f=>{
     var outside=Path.Combine(f.Root,"outside");Directory.CreateDirectory(outside);Directory.CreateDirectory(Path.Combine(f.Root,"data"));

@@ -1,0 +1,16 @@
+{
+  "goal":"Thai-first ROTest UI and Morroc test hub, with manually controlled Guild War",
+  "approved":"Owner requested font/readability and Thai in game plus patcher; level/job maximizer, normal/high job changer, item shops, general warper and guild-war NPC with on/off anytime; owner confirmed ok go",
+  "scope":"ROTest only; no FINN production changes, account reset, character deletion or new monitoring",
+  "language":"Thai-first new menus/NPC dialogs and patcher; preserve canonical English skill/item/map names. Verify legacy client text encoding before release.",
+  "font":"Patcher Tahoma 12pt with larger layout; first verify client's existing Thai language/font selection without replacing ROTest.exe. Do not bypass the patcher executable fingerprint guard.",
+  "npcPlacement":{"map":"morocc","row":[[151,94],[154,94],[157,94],[160,94],[163,94]],"validation":"Check walkable cells and existing NPC collisions in isolated rAthena startup before enabling"},
+  "npcRules":["Level service sets BaseLevel 99 and JobLevel 99; engine clamps to class cap and awards only missing points", "Job selection confirms and resets old skills before changing to an explicit normal/high job; no third/fourth classes", "Shops use normal server buy logic and explicit existing item IDs", "Warp menus use known classic maps and validate typed destinations", "Guild War controls require GM99 and act only in ROTest; remove default FE/SE auto-start script registrations but retain castle mechanics; initial state remains OFF"],
+  "tasks":[
+    {"name":"Server add-on", "files":["hub/testhub.utf8.txt","hub/testhub.txt","hub/scripts_custom.conf"], "verification":["Encode Thai dialog as CP874", "Run map-server --run-once against isolated restored database with no published ports", "Check NPC syntax, item IDs, map cells and manual-only WoE state", "Back up live configuration and restore database before changing mounts", "Verify in-game NPC dialog/actions and preserve player data"]},
+    {"name":"Thai UI", "files":["rotest-patcher/src/ROTest.Patcher.Core/ThaiText.cs","rotest-patcher/src/ROTest.Patcher.Windows/Program.cs","thai-client/data/clientinfo.xml","thai-client/data/sclientinfo.xml"], "verification":["Test Thai status mapping and retained file paths", "Run all updater regressions", "Verify Thai dialog rendering on Windows", "Test signed update and graphics/game buttons"]},
+    {"name":"Release", "verification":["Publish immutable signed client patch and new Thai patcher release", "Explain one-time patcher application upgrade because 1.0 does not self-update", "Install Windows build and verify Desktop target", "Post verified links/files to ROTest Discord only"]}
+  ],
+  "rollback":"Remove only ROTest hub bind mounts and restore prior custom script list; leave data and backups intact. Restore client XML and previous patcher binary without altering FINN.",
+  "publicExpiryUnchanged":"2026-10-13T01:25:01+07:00"
+}

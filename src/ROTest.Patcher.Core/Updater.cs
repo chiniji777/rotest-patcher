@@ -148,7 +148,8 @@ public class Updater
     public Task RollbackAsync()
     {
         using var gate=Acquire();using var gameLock=new FileStream(Path.Combine(root,"ROTest.exe"),FileMode.Open,FileAccess.Read,FileShare.None);RecoverInternal();
-        foreach(var transaction in Transactions().Reverse()){var journal=Read<Journal>(Path.Combine(transaction,"journal.json"));if(journal.Status=="committed"){Restore(transaction,journal,true);return Task.CompletedTask;}}
+        foreach(var entry in Transactions().Select(t=>(Directory:t,Journal:Read<Journal>(Path.Combine(t,"journal.json")))).Where(x=>x.Journal.Status=="committed").OrderByDescending(x=>x.Journal.IntendedState?.Revision??0))
+        {Restore(entry.Directory,entry.Journal,true);return Task.CompletedTask;}
         throw new InvalidOperationException("No completed update is available to restore.");
     }
     public async Task<UpdateResult> UpdateAsync(byte[] envelope,bool force=false,CancellationToken cancellation=default)
@@ -159,7 +160,7 @@ public class Updater
         if(!force&&manifest.Sequence<=state.PausedSequence)return new(state.Version,0,true);
         var changed=manifest.Files.Where(f=>!File.Exists(Target(f.Path))||!FileHash(Target(f.Path)).Equals(f.Sha256,StringComparison.OrdinalIgnoreCase)).ToArray();
         if(changed.Length==0){Save(StateFile,new InstalledState{Sequence=manifest.Sequence,HighestSequence=Math.Max(state.HighestSequence,manifest.Sequence),Version=manifest.Version,TransactionId=state.TransactionId,Revision=state.Revision+1});return new(manifest.Version,0);}
-        var transaction=Path.Combine(store,"transactions",DateTime.UtcNow.ToString("yyyyMMddHHmmssfff")+"-"+Guid.NewGuid().ToString("N"));NoLinks(transaction);Directory.CreateDirectory(transaction);
+        var transaction=Path.Combine(store,"transactions",DateTime.UtcNow.ToString("yyyyMMddHHmmssfff",System.Globalization.CultureInfo.InvariantCulture)+"-"+Guid.NewGuid().ToString("N"));NoLinks(transaction);Directory.CreateDirectory(transaction);
         var entries=new List<JournalEntry>();
         foreach(var file in changed)
         {

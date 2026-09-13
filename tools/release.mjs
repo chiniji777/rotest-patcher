@@ -9,8 +9,8 @@ const privateKey=fs.readFileSync(keyFile);
 const expectedKey=fs.readFileSync(path.join(repository,'src/ROTest.Patcher.Windows/release-public.pem'),'utf8').trim();
 if(crypto.createPublicKey(privateKey).export({type:'spki',format:'pem'}).toString().trim()!==expectedKey)throw Error('Signing key does not match the embedded public verifier');
 const assets=[
- ['data/clientinfo.xml','public/patch/data/clientinfo.xml'],
- ['data/sclientinfo.xml','public/patch/data/sclientinfo.xml'],
+ ['data/clientinfo.xml','thai-client/data/clientinfo.xml'],
+ ['data/sclientinfo.xml','thai-client/data/sclientinfo.xml'],
  ['data/luafiles514/lua files/skillinfoz/skillinfo_f.lub','client-2021-overlay/data/luafiles514/lua files/skillinfoz/skillinfo_f.lub'],
  ['opensetupl.exe','client-tools/opensetup/opensetupl.exe'],
  ...['license.txt','license-lua.txt','license-tabicons.txt','readme.txt','privacy.txt'].map(name=>['graphics-setup-docs/'+name,'client-tools/opensetup/doc/'+name])

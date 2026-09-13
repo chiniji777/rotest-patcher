@@ -1,5 +1,15 @@
 ROTest Patcher
 
+รุ่น 1.1 ภาษาไทย: แตก ZIP ทับเฉพาะ ROTest Patcher.exe ในโฟลเดอร์ ROTest เดิม
+ปิด Patcher ก่อนเปลี่ยนไฟล์ และปิดเกม ROTest ก่อนกดอัปเดตไฟล์เกม
+Patcher รุ่นเดิมไม่อัปเดตตัวโปรแกรมเอง ต้องเปลี่ยน EXE ครั้งเดียวเพื่อรับหน้าจอภาษาไทย
+แพตช์ภาษาไทยปรับการแสดงข้อความ ไม่เปลี่ยน ROTest.exe หรือเกม FINN
+NPC ทดสอบใหม่อยู่ Morroc บริเวณ 151–163,94: เพิ่มเลเวล/จ็อบ, เปลี่ยนอาชีพ,
+ร้านค้า, วาร์ป และเปิด/ปิด WoE FE สำหรับ GM ระดับ 99
+สนาม GvG ใช้ได้ตลอดโดยไม่ขึ้นกับสถานะ WoE
+ข้อความ NPC ใหม่และหน้าจอ Patcher เป็นภาษาไทย ชื่อสกิล/ไอเทม/แมพคงชื่อเดิม
+เมนูเก่าบางส่วนของไคลเอนต์ยังไม่ได้แปลไทย
+
 Windows x64 updater for the existing ROTest-20211103-candidate1 client.
 This repository does not include the full Ragnarok game, user accounts or credentials.
 

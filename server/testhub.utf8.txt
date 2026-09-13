@@ -1,0 +1,155 @@
+morocc,151,94,4	script	เพิ่มเลเวล#RT_Level	909,{
+	mes "[เพิ่มเลเวลและจ็อบ]";
+	mes "เติมเลเวลและจ็อบให้เต็มตามเพดานอาชีพ";
+	mes "อาชีพปัจจุบัน: "+jobname(Class);
+	if (select("เติมเลเวลและจ็อบเต็ม:ยกเลิก") == 2) close;
+	if (BaseLevel < 99) BaseLevel = 99;
+	JobLevel = 99;
+	percentheal 100,100;
+	mes "เรียบร้อย เลเวล "+BaseLevel+" / จ็อบ "+JobLevel;
+	close;
+OnInit:
+	debugmes "ROTEST_HUB level ready";
+	end;
+}
+
+morocc,154,94,4	script	เปลี่ยนอาชีพ#RT_Job	123,{
+	mes "[เปลี่ยนอาชีพทดสอบ]";
+	mes "เลือกได้เฉพาะอาชีพปกติและไฮคลาส";
+	.@group = select("อาชีพเริ่มต้น:อาชีพคลาสสอง:อาชีพไฮคลาส:ยกเลิก");
+	if (.@group == 4) close;
+	if (.@group == 1) {
+		setarray .@jobs[0],JOB_NOVICE,JOB_SWORDMAN,JOB_MAGE,JOB_ARCHER,JOB_ACOLYTE,JOB_MERCHANT,JOB_THIEF,JOB_SUPER_NOVICE,JOB_GUNSLINGER,JOB_NINJA;
+		.@menu$="Novice:Swordman:Mage:Archer:Acolyte:Merchant:Thief:Super Novice:Gunslinger:Ninja";
+	} else if (.@group == 2) {
+		setarray .@jobs[0],JOB_KNIGHT,JOB_PRIEST,JOB_WIZARD,JOB_BLACKSMITH,JOB_HUNTER,JOB_ASSASSIN,JOB_CRUSADER,JOB_MONK,JOB_SAGE,JOB_ROGUE,JOB_ALCHEMIST;
+		.@jobs[11]=(Sex==SEX_MALE)?JOB_BARD:JOB_DANCER;
+		.@menu$="Knight:Priest:Wizard:Blacksmith:Hunter:Assassin:Crusader:Monk:Sage:Rogue:Alchemist:"+((Sex==SEX_MALE)?"Bard":"Dancer");
+	} else {
+		setarray .@jobs[0],JOB_LORD_KNIGHT,JOB_HIGH_PRIEST,JOB_HIGH_WIZARD,JOB_WHITESMITH,JOB_SNIPER,JOB_ASSASSIN_CROSS,JOB_PALADIN,JOB_CHAMPION,JOB_PROFESSOR,JOB_STALKER,JOB_CREATOR;
+		.@jobs[11]=(Sex==SEX_MALE)?JOB_CLOWN:JOB_GYPSY;
+		.@menu$="Lord Knight:High Priest:High Wizard:Whitesmith:Sniper:Assassin Cross:Paladin:Champion:Professor:Stalker:Creator:"+((Sex==SEX_MALE)?"Clown":"Gypsy");
+	}
+	.@choice=select(.@menu$+":ยกเลิก")-1;
+	if (.@choice>=getarraysize(.@jobs)) close;
+	.@job=.@jobs[.@choice];
+	if (Class==.@job) {mes "เป็นอาชีพนี้อยู่แล้ว";close;}
+	next;
+	mes "จะเปลี่ยนเป็น "+jobname(.@job);
+	mes "สกิลของอาชีพเดิมจะถูกรีเซต แต่ไม่ลบไอเทมหรือตัวละคร";
+	if (select("ยืนยันเปลี่ยนอาชีพ:ยกเลิก") == 2) close;
+	resetskill;
+	jobchange .@job,(.@group==3)?1:0;
+	if (Class!=.@job) {mes "เปลี่ยนอาชีพไม่สำเร็จ กรุณาแจ้ง GM";close;}
+	skill NV_BASIC,0,0;
+	SkillPoint=(.@job==JOB_NOVICE)?0:((.@group==1)?9:58);
+	percentheal 100,100;
+	mes "เปลี่ยนอาชีพเรียบร้อย";
+	mes "คุยกับ NPC เพิ่มเลเวลเพื่อเติมจ็อบของอาชีพใหม่";
+	close;
+OnInit:
+	debugmes "ROTEST_HUB job ready";
+	end;
+}
+
+morocc,157,94,4	script	ร้านทดสอบ#RT_Shop	99,{
+	mes "[ร้านขายของทดสอบ]";
+	mes "เลือกหมวดของที่ต้องการ ราคาใช้สำหรับเซิร์ฟเวอร์ทดสอบ";
+	mes "GM ใช้คำสั่ง @zeny 10000000 เพื่อรับเงินทดสอบได้";
+	.@shop=select("ยาและของใช้:Scroll ร่ายเวท:อาวุธ:เกราะและโล่:การ์ด:ยกเลิก");
+	if (.@shop==6) close;
+	close2;
+	switch(.@shop) {
+	case 1: callshop "RT_Consumables",1; break;
+	case 2: callshop "RT_Scrolls",1; break;
+	case 3: callshop "RT_Weapons",1; break;
+	case 4: callshop "RT_Armor",1; break;
+	case 5: callshop "RT_Cards",1; break;
+	}
+	end;
+OnInit:
+	debugmes "ROTEST_HUB shop ready";
+	end;
+}
+-	shop	RT_Consumables	-1,501:-1,502:-1,503:-1,504:-1,505:-1,506:-1,507:-1,508:-1,509:-1,510:-1,511:-1,512:-1,513:-1,514:-1,515:-1,516:-1,517:-1,518:-1,519:-1,520:-1,525:-1,526:-1,601:-1,602:-1,603:-1,604:-1,605:-1,606:-1,607:-1,608:-1,609:-1,610:-1,611:-1,612:-1,645:-1,656:-1,657:-1,713:-1,714:-1,715:-1,716:-1,717:-1,1750:-1,1751:-1,1752:-1
+-	shop	RT_Scrolls	-1,12001:-1,12002:-1,12003:-1,12004:-1,12005:-1,12006:-1,12007:-1,12008:-1,12009:-1,12010:-1,12011:-1,12012:-1,12013:-1,12014:-1,12015:-1,12016:-1
+-	shop	RT_Weapons	-1,1108:-1,1117:-1,1120:-1,1208:-1,1211:-1,1217:-1,1251:-1,1253:-1,1258:-1,1302:-1,1306:-1,1405:-1,1408:-1,1502:-1,1505:-1,1550:-1,1551:-1,1602:-1,1605:-1,1608:-1,1611:-1,1702:-1,1705:-1,1708:-1,1802:-1,1804:-1,1902:-1,1904:-1,1951:-1,1953:-1,13414:-1
+-	shop	RT_Armor	-1,2102:-1,2106:-1,2108:-1,2110:-1,2201:-1,2203:-1,2210:-1,2211:-1,2304:-1,2306:-1,2308:-1,2310:-1,2311:-1,2315:-1,2404:-1,2406:-1,2409:-1,2412:-1,2504:-1,2506:-1,2508:-1,2510:-1,2621:-1,2622:-1,2624:-1,2625:-1
+-	shop	RT_Cards	-1,4001:-1,4002:-1,4003:-1,4004:-1,4005:-1,4006:-1,4007:-1,4008:-1,4009:-1,4010:-1,4031:-1,4058:-1,4076:-1,4097:-1,4105:-1,4120:-1,4131:-1,4140:-1
+
+morocc,160,94,4	script	วาร์ปทดสอบ#RT_Warp	111,{
+	mes "[วาร์ปทดสอบ]";
+	switch(select("เมือง:ดันเจี้ยน:พิมพ์ชื่อแมพ:ยกเลิก")) {
+	case 1:
+		setarray .@maps$[0],"morocc","prontera","geffen","payon","alberta","izlude","aldebaran","yuno";
+		.@pick=select("Morroc:Prontera:Geffen:Payon:Alberta:Izlude:Al De Baran:Yuno:ยกเลิก")-1;
+		if (.@pick>=getarraysize(.@maps$)) close;
+		.@map$=.@maps$[.@pick];
+		break;
+	case 2:
+		setarray .@maps$[0],"tur_dun03","tur_dun04","moc_pryd04","in_sphinx5","gef_dun02","pay_dun04","prt_maze03","gl_knt02","iz_dun04","anthell02","c_tower3";
+		.@pick=select("Turtle 3:Turtle 4:Pyramid 4:Sphinx 5:Geffen Dungeon 3:Payon Dungeon 5:Prontera Maze 3:Glast Heim Chivalry 2:Izlude Dungeon 5:Ant Hell 2:Clock Tower 3:ยกเลิก")-1;
+		if (.@pick>=getarraysize(.@maps$)) close;
+		.@map$=.@maps$[.@pick];
+		break;
+	case 3:
+		mes "พิมพ์ชื่อแมพ เช่น morocc หรือ tur_dun03";
+		input .@map$;
+		if (getstrlen(.@map$)>24 || getstrlen(.@map$)<1) {mes "ชื่อแมพไม่ถูกต้อง";close;}
+		break;
+	default: close;
+	}
+	if (getmapusers(.@map$)<0) {mes "แมพนี้ไม่เปิดในเซิร์ฟเวอร์ทดสอบ";close;}
+	close2;
+	warp .@map$,0,0;
+	end;
+OnInit:
+	debugmes "ROTEST_HUB warp ready";
+	end;
+}
+
+morocc,163,94,4	script	กิลด์วอร์#RT_WoE	722,{
+	mes "[กิลด์วอร์ทดสอบ]";
+	mes "สถานะ WoE FE: "+(agitcheck()?"เปิด":"ปิด");
+	mes "แมพรวมทางเข้า 20 ปราสาทอยู่ที่ guild_vs2";
+	.@menu$="ไปแมพรวม 20 ปราสาท:ไปเขตปราสาท:กลับ Morroc";
+	if (getgmlevel()>=99) .@menu$+=":เปิด WoE:ปิด WoE";
+	.@menu$+=":ยกเลิก";
+	.@choice=select(.@menu$);
+	if (.@choice==1) {close2;warp "guild_vs2",50,50;end;}
+	if (.@choice==2) {
+		.@region=select("Prontera (Fadhgridh):Payon:Geffen:Al De Baran:ยกเลิก");
+		if (.@region==5) close;
+		close2;
+		switch(.@region) {
+		case 1: warp "prt_gld",153,137; break;
+		case 2: warp "pay_gld",121,233; break;
+		case 3: warp "gef_fild13",214,75; break;
+		case 4: warp "alde_gld",48,83; break;
+		}
+		end;
+	}
+	if (.@choice==3) {close2;warp "morocc",156,97;end;}
+	if (getgmlevel()<99 || .@choice>5) close;
+	if (.@choice==4) {
+		if (agitcheck()) {mes "WoE เปิดอยู่แล้ว";close;}
+		if (select("ยืนยันเปิด WoE ตอนนี้:ยกเลิก")==2) close;
+		if (getgmlevel()<99 || agitcheck()) close;
+		agitstart;
+		announce "[ROTest] GM เปิดกิลด์วอร์ทดสอบแล้ว",bc_all;
+	} else {
+		if (!agitcheck()) {mes "WoE ปิดอยู่แล้ว";close;}
+		if (select("ยืนยันปิด WoE ตอนนี้:ยกเลิก")==2) close;
+		if (getgmlevel()<99 || !agitcheck()) close;
+		agitend;
+		announce "[ROTest] GM ปิดกิลด์วอร์ทดสอบแล้ว",bc_all;
+	}
+	close;
+OnInit:
+	setmapflag "guild_vs1",mf_gvg;
+	for (.@x=151;.@x<=163;.@x+=3) {
+		if (!checkcell("morocc",.@x,94,CELL_CHKPASS)) debugmes "ROTEST_HUB BAD_CELL "+.@x+",94";
+	}
+	debugmes "ROTEST_HUB woe ready; manual control; active="+agitcheck();
+	end;
+}

@@ -1,0 +1,42 @@
+guild_vs2,26,50,0	warp	Kriemhild#RT01	1,1,prtg_cas01,99,32
+guild_vs2,30,57,0	warp	Nuernberg#RT02	1,1,aldeg_cas03,114,286
+guild_vs2,34,61,0	warp	Wuerzburg#RT03	1,1,aldeg_cas04,149,17
+guild_vs2,37,65,0	warp	Neuschwanstein#RT04	1,1,aldeg_cas01,34,248
+guild_vs2,41,69,0	warp	Hohenschwangau#RT05	1,1,aldeg_cas02,88,163
+guild_vs2,50,73,0	warp	Rothenburg#RT06	1,1,aldeg_cas05,216,103
+guild_vs2,57,69,0	warp	Repherion#RT07	1,1,gefg_cas01,95,178
+guild_vs2,61,65,0	warp	Mersetzdeitz#RT08	1,1,gefg_cas05,99,200
+guild_vs2,65,61,0	warp	Yesnelph#RT09	1,1,gefg_cas03,100,280
+guild_vs2,69,58,0	warp	Bergel#RT10	1,1,gefg_cas04,24,149
+guild_vs2,73,50,0	warp	Eeyolbriggar#RT11	1,1,gefg_cas02,70,143
+guild_vs2,69,42,0	warp	Holy Shadow#RT12	1,1,payg_cas03,226,26
+guild_vs2,65,38,0	warp	Scarlet Palace#RT13	1,1,payg_cas02,272,57
+guild_vs2,62,34,0	warp	Bright Arbor#RT14	1,1,payg_cas01,214,48
+guild_vs2,58,30,0	warp	Sacred Altar#RT15	1,1,payg_cas04,252,271
+guild_vs2,50,26,0	warp	Bamboo Grove Hill#RT16	1,1,payg_cas05,62,227
+guild_vs2,42,30,0	warp	Gondul#RT17	1,1,prtg_cas05,17,235
+guild_vs2,37,33,0	warp	Fadhgridh#RT18	1,1,prtg_cas03,168,12
+guild_vs2,34,37,0	warp	Swanhild#RT19	1,1,prtg_cas02,43,229
+guild_vs2,30,41,0	warp	Skoegul#RT20	1,1,prtg_cas04,86,13
+
+guild_vs2,50,47,4	script	ทางเข้าปราสาท#RT_Guide	722,{
+	mes "[แมพรวม 20 ปราสาท]";
+	mes "เดินเข้าวาร์ปที่เรียงรอบแมพเพื่อเข้าปราสาท";
+	mes "เริ่ม Kriemhild ทางซ้าย วนรอบไปจนถึง Skoegul";
+	mes "Fadhgridh อยู่ทางล่างซ้าย พิกัด 37,33";
+	mes "การยึดปราสาททำได้เมื่อ GM เปิด WoE FE เท่านั้น";
+	if (select("อยู่ที่นี่:กลับ Morroc")==1) close;
+	close2;
+	warp "morocc",156,97;
+	end;
+OnInit:
+	setarray .@x[0],26,30,34,37,41,50,57,61,65,69,73,69,65,62,58,50,42,37,34,30;
+	setarray .@y[0],50,57,61,65,69,73,69,65,61,58,50,42,38,34,30,26,30,33,37,41;
+	.@bad=0;
+	for (.@i=0;.@i<20;.@i++) {
+		if (!checkcell("guild_vs2",.@x[.@i],.@y[.@i],CELL_CHKPASS)) {debugmes "ROTEST_CASTLE BAD_CELL "+(.@i+1);.@bad++;}
+	}
+	if (!checkcell("guild_vs2",50,50,CELL_CHKPASS) || !checkcell("guild_vs2",50,47,CELL_CHKPASS)) {debugmes "ROTEST_CASTLE BAD_CENTER";.@bad++;}
+	debugmes "ROTEST_CASTLE checked=20 bad="+.@bad;
+	end;
+}
