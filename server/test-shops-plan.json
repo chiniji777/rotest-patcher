@@ -1,0 +1,12 @@
+{
+  "scope":"ROTest Cash/Custom NPC shops only; no FINN production, GVG calibration, real cash or external wallet",
+  "approval":"Owner: ok ลุยเลย, after request to place Cash/Custom NPCs in central Morroc",
+  "placement":{"cash":["morocc",151,100],"custom":["morocc",157,100]},
+  "cash":"22 existing rAthena cash items in four categories; standard engine effects and Zeny prices",
+  "custom":"87 reconstructed items: 85 boxes whose names and content quantities agree, 2 PVP-only potions; 26 other explicit/FINN-branded entries withheld",
+  "safety":["No overwrite of existing item IDs","NoConsume items are consumed by synchronous script only after weight/slot checks","PVP potions do not consume outside mf_pvp","No speculative equipment effects or game executable changes","Preserve backups and one-month public test exception"],
+  "verification":["Generator negative tests and complete updater baseline","Pinned rAthena isolated run-once against restored DB","Client Lua table checks","Live shop purchase and item use on approved Madiwa, including refused use","Signed patch download and Windows file hash verification"],
+  "rollback":"Restore previous compose/custom script list and prior signed client file backup; remove no player data. If new items were acquired, preserve their definitions during recovery until contents are accounted for.",
+  "deploymentTarget":"mini:/Users/nutmacmini/ro-test-rathena",
+  "expiryUnchanged":"2026-10-13T01:25:01+07:00"
+}

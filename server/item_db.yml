@@ -1,0 +1,961 @@
+Header:
+  Type: ITEM_DB
+  Version: 3
+Body:
+  - Id: 32000
+    AegisName: RT_Custom_32000
+    Name: "[PVP] HP Potion"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_PvpPotion",32000,325,0;
+  - Id: 32001
+    AegisName: RT_Custom_32001
+    Name: "[PVP] SP Potion"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_PvpPotion",32001,0,60;
+  - Id: 32105
+    AegisName: RT_Custom_32105
+    Name: "10 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32105,985,10;
+  - Id: 32106
+    AegisName: RT_Custom_32106
+    Name: "50 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32106,985,50;
+  - Id: 32107
+    AegisName: RT_Custom_32107
+    Name: "100 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32107,985,100;
+  - Id: 32108
+    AegisName: RT_Custom_32108
+    Name: "150 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32108,985,150;
+  - Id: 32109
+    AegisName: RT_Custom_32109
+    Name: "300 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32109,985,300;
+  - Id: 32110
+    AegisName: RT_Custom_32110
+    Name: "500 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32110,985,500;
+  - Id: 32111
+    AegisName: RT_Custom_32111
+    Name: "1000 Elunium Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32111,985,1000;
+  - Id: 32119
+    AegisName: RT_Custom_32119
+    Name: "10 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32119,678,10;
+  - Id: 32120
+    AegisName: RT_Custom_32120
+    Name: "50 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32120,678,50;
+  - Id: 32121
+    AegisName: RT_Custom_32121
+    Name: "100 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32121,678,100;
+  - Id: 32122
+    AegisName: RT_Custom_32122
+    Name: "150 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32122,678,150;
+  - Id: 32123
+    AegisName: RT_Custom_32123
+    Name: "300 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32123,678,300;
+  - Id: 32124
+    AegisName: RT_Custom_32124
+    Name: "500 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32124,678,500;
+  - Id: 32125
+    AegisName: RT_Custom_32125
+    Name: "1000 Poison Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32125,678,1000;
+  - Id: 32126
+    AegisName: RT_Custom_32126
+    Name: "10 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32126,7139,10;
+  - Id: 32127
+    AegisName: RT_Custom_32127
+    Name: "50 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32127,7139,50;
+  - Id: 32128
+    AegisName: RT_Custom_32128
+    Name: "100 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32128,7139,100;
+  - Id: 32129
+    AegisName: RT_Custom_32129
+    Name: "150 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32129,7139,150;
+  - Id: 32130
+    AegisName: RT_Custom_32130
+    Name: "300 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32130,7139,300;
+  - Id: 32131
+    AegisName: RT_Custom_32131
+    Name: "500 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32131,7139,500;
+  - Id: 32132
+    AegisName: RT_Custom_32132
+    Name: "1000 Glistening Coat Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32132,7139,1000;
+  - Id: 32133
+    AegisName: RT_Custom_32133
+    Name: "10 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32133,7135,10;
+  - Id: 32134
+    AegisName: RT_Custom_32134
+    Name: "50 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32134,7135,50;
+  - Id: 32135
+    AegisName: RT_Custom_32135
+    Name: "100 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32135,7135,100;
+  - Id: 32136
+    AegisName: RT_Custom_32136
+    Name: "150 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32136,7135,150;
+  - Id: 32137
+    AegisName: RT_Custom_32137
+    Name: "300 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32137,7135,300;
+  - Id: 32138
+    AegisName: RT_Custom_32138
+    Name: "500 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32138,7135,500;
+  - Id: 32139
+    AegisName: RT_Custom_32139
+    Name: "1000 Fire Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32139,7135,1000;
+  - Id: 32140
+    AegisName: RT_Custom_32140
+    Name: "10 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32140,7136,10;
+  - Id: 32141
+    AegisName: RT_Custom_32141
+    Name: "50 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32141,7136,50;
+  - Id: 32142
+    AegisName: RT_Custom_32142
+    Name: "100 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32142,7136,100;
+  - Id: 32143
+    AegisName: RT_Custom_32143
+    Name: "150 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32143,7136,150;
+  - Id: 32144
+    AegisName: RT_Custom_32144
+    Name: "300 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32144,7136,300;
+  - Id: 32145
+    AegisName: RT_Custom_32145
+    Name: "500 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32145,7136,500;
+  - Id: 32146
+    AegisName: RT_Custom_32146
+    Name: "1000 Acid Bottle Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32146,7136,1000;
+  - Id: 32147
+    AegisName: RT_Custom_32147
+    Name: "10 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32147,505,10;
+  - Id: 32148
+    AegisName: RT_Custom_32148
+    Name: "50 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32148,505,50;
+  - Id: 32149
+    AegisName: RT_Custom_32149
+    Name: "100 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32149,505,100;
+  - Id: 32150
+    AegisName: RT_Custom_32150
+    Name: "150 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32150,505,150;
+  - Id: 32151
+    AegisName: RT_Custom_32151
+    Name: "300 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32151,505,300;
+  - Id: 32152
+    AegisName: RT_Custom_32152
+    Name: "500 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32152,505,500;
+  - Id: 32153
+    AegisName: RT_Custom_32153
+    Name: "1000 Blue Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32153,505,1000;
+  - Id: 32154
+    AegisName: RT_Custom_32154
+    Name: "10 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32154,547,10;
+  - Id: 32155
+    AegisName: RT_Custom_32155
+    Name: "50 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32155,547,50;
+  - Id: 32156
+    AegisName: RT_Custom_32156
+    Name: "100 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32156,547,100;
+  - Id: 32157
+    AegisName: RT_Custom_32157
+    Name: "150 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32157,547,150;
+  - Id: 32158
+    AegisName: RT_Custom_32158
+    Name: "300 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32158,547,300;
+  - Id: 32159
+    AegisName: RT_Custom_32159
+    Name: "500 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32159,547,500;
+  - Id: 32160
+    AegisName: RT_Custom_32160
+    Name: "1000 Condensed White Potion Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32160,547,1000;
+  - Id: 32161
+    AegisName: RT_Custom_32161
+    Name: "100 Resist Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32161,12118,100;
+  - Id: 32162
+    AegisName: RT_Custom_32162
+    Name: "300 Resist Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32162,12118,300;
+  - Id: 32163
+    AegisName: RT_Custom_32163
+    Name: "500 Resist Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32163,12118,500;
+  - Id: 32164
+    AegisName: RT_Custom_32164
+    Name: "1000 Resist Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32164,12118,1000;
+  - Id: 32165
+    AegisName: RT_Custom_32165
+    Name: "100 Resist Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32165,12119,100;
+  - Id: 32166
+    AegisName: RT_Custom_32166
+    Name: "300 Resist Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32166,12119,300;
+  - Id: 32167
+    AegisName: RT_Custom_32167
+    Name: "500 Resist Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32167,12119,500;
+  - Id: 32168
+    AegisName: RT_Custom_32168
+    Name: "1000 Resist Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32168,12119,1000;
+  - Id: 32169
+    AegisName: RT_Custom_32169
+    Name: "100 Resist Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32169,12120,100;
+  - Id: 32170
+    AegisName: RT_Custom_32170
+    Name: "300 Resist Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32170,12120,300;
+  - Id: 32171
+    AegisName: RT_Custom_32171
+    Name: "500 Resist Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32171,12120,500;
+  - Id: 32172
+    AegisName: RT_Custom_32172
+    Name: "1000 Resist Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32172,12120,1000;
+  - Id: 32173
+    AegisName: RT_Custom_32173
+    Name: "100 Resist Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32173,12121,100;
+  - Id: 32174
+    AegisName: RT_Custom_32174
+    Name: "300 Resist Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32174,12121,300;
+  - Id: 32175
+    AegisName: RT_Custom_32175
+    Name: "500 Resist Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32175,12121,500;
+  - Id: 32176
+    AegisName: RT_Custom_32176
+    Name: "1000 Resist Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32176,12121,1000;
+  - Id: 32177
+    AegisName: RT_Custom_32177
+    Name: "100 Elemental Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32177,12114,100;
+  - Id: 32178
+    AegisName: RT_Custom_32178
+    Name: "300 Elemental Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32178,12114,300;
+  - Id: 32179
+    AegisName: RT_Custom_32179
+    Name: "500 Elemental Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32179,12114,500;
+  - Id: 32180
+    AegisName: RT_Custom_32180
+    Name: "1000 Elemental Fire Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32180,12114,1000;
+  - Id: 32181
+    AegisName: RT_Custom_32181
+    Name: "100 Elemental Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32181,12115,100;
+  - Id: 32182
+    AegisName: RT_Custom_32182
+    Name: "300 Elemental Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32182,12115,300;
+  - Id: 32183
+    AegisName: RT_Custom_32183
+    Name: "500 Elemental Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32183,12115,500;
+  - Id: 32184
+    AegisName: RT_Custom_32184
+    Name: "1000 Elemental Water Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32184,12115,1000;
+  - Id: 32185
+    AegisName: RT_Custom_32185
+    Name: "100 Elemental Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32185,12116,100;
+  - Id: 32186
+    AegisName: RT_Custom_32186
+    Name: "300 Elemental Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32186,12116,300;
+  - Id: 32187
+    AegisName: RT_Custom_32187
+    Name: "500 Elemental Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32187,12116,500;
+  - Id: 32188
+    AegisName: RT_Custom_32188
+    Name: "1000 Elemental Earth Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32188,12116,1000;
+  - Id: 32189
+    AegisName: RT_Custom_32189
+    Name: "100 Elemental Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32189,12117,100;
+  - Id: 32190
+    AegisName: RT_Custom_32190
+    Name: "300 Elemental Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32190,12117,300;
+  - Id: 32191
+    AegisName: RT_Custom_32191
+    Name: "500 Elemental Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32191,12117,500;
+  - Id: 32192
+    AegisName: RT_Custom_32192
+    Name: "1000 Elemental Wind Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32192,12117,1000;
+  - Id: 32193
+    AegisName: RT_Custom_32193
+    Name: "100 Aloevera Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32193,606,100;
+  - Id: 32194
+    AegisName: RT_Custom_32194
+    Name: "300 Aloevera Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32194,606,300;
+  - Id: 32195
+    AegisName: RT_Custom_32195
+    Name: "500 Aloevera Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32195,606,500;
+  - Id: 32196
+    AegisName: RT_Custom_32196
+    Name: "1000 Aloevera Box"
+    Type: Usable
+    Buy: 100
+    Sell: 0
+    Weight: 10
+    Flags:
+      NoConsume: true
+    Script: |
+      callfunc "F_RT_OpenBox",32196,606,1000;

@@ -1,0 +1,864 @@
+{
+  "ready": [
+    {
+      "id": 32000,
+      "name": "[PVP] HP Potion",
+      "kind": "pvp-heal",
+      "hp": 325,
+      "sp": 0,
+      "icon": 504
+    },
+    {
+      "id": 32001,
+      "name": "[PVP] SP Potion",
+      "kind": "pvp-heal",
+      "hp": 0,
+      "sp": 60,
+      "icon": 505
+    },
+    {
+      "id": 32105,
+      "name": "10 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32106,
+      "name": "50 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32107,
+      "name": "100 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32108,
+      "name": "150 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32109,
+      "name": "300 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32110,
+      "name": "500 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32111,
+      "name": "1000 Elunium Box",
+      "kind": "box",
+      "content": 985,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32119,
+      "name": "10 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32120,
+      "name": "50 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32121,
+      "name": "100 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32122,
+      "name": "150 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32123,
+      "name": "300 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32124,
+      "name": "500 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32125,
+      "name": "1000 Poison Bottle Box",
+      "kind": "box",
+      "content": 678,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32126,
+      "name": "10 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32127,
+      "name": "50 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32128,
+      "name": "100 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32129,
+      "name": "150 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32130,
+      "name": "300 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32131,
+      "name": "500 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32132,
+      "name": "1000 Glistening Coat Box",
+      "kind": "box",
+      "content": 7139,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32133,
+      "name": "10 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32134,
+      "name": "50 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32135,
+      "name": "100 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32136,
+      "name": "150 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32137,
+      "name": "300 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32138,
+      "name": "500 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32139,
+      "name": "1000 Fire Bottle Box",
+      "kind": "box",
+      "content": 7135,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32140,
+      "name": "10 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32141,
+      "name": "50 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32142,
+      "name": "100 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32143,
+      "name": "150 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32144,
+      "name": "300 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32145,
+      "name": "500 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32146,
+      "name": "1000 Acid Bottle Box",
+      "kind": "box",
+      "content": 7136,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32147,
+      "name": "10 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32148,
+      "name": "50 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32149,
+      "name": "100 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32150,
+      "name": "150 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32151,
+      "name": "300 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32152,
+      "name": "500 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32153,
+      "name": "1000 Blue Potion Box",
+      "kind": "box",
+      "content": 505,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32154,
+      "name": "10 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 10,
+      "icon": 603
+    },
+    {
+      "id": 32155,
+      "name": "50 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 50,
+      "icon": 603
+    },
+    {
+      "id": 32156,
+      "name": "100 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32157,
+      "name": "150 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 150,
+      "icon": 603
+    },
+    {
+      "id": 32158,
+      "name": "300 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32159,
+      "name": "500 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32160,
+      "name": "1000 Condensed White Potion Box",
+      "kind": "box",
+      "content": 547,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32161,
+      "name": "100 Resist Fire Box",
+      "kind": "box",
+      "content": 12118,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32162,
+      "name": "300 Resist Fire Box",
+      "kind": "box",
+      "content": 12118,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32163,
+      "name": "500 Resist Fire Box",
+      "kind": "box",
+      "content": 12118,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32164,
+      "name": "1000 Resist Fire Box",
+      "kind": "box",
+      "content": 12118,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32165,
+      "name": "100 Resist Water Box",
+      "kind": "box",
+      "content": 12119,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32166,
+      "name": "300 Resist Water Box",
+      "kind": "box",
+      "content": 12119,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32167,
+      "name": "500 Resist Water Box",
+      "kind": "box",
+      "content": 12119,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32168,
+      "name": "1000 Resist Water Box",
+      "kind": "box",
+      "content": 12119,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32169,
+      "name": "100 Resist Earth Box",
+      "kind": "box",
+      "content": 12120,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32170,
+      "name": "300 Resist Earth Box",
+      "kind": "box",
+      "content": 12120,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32171,
+      "name": "500 Resist Earth Box",
+      "kind": "box",
+      "content": 12120,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32172,
+      "name": "1000 Resist Earth Box",
+      "kind": "box",
+      "content": 12120,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32173,
+      "name": "100 Resist Wind Box",
+      "kind": "box",
+      "content": 12121,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32174,
+      "name": "300 Resist Wind Box",
+      "kind": "box",
+      "content": 12121,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32175,
+      "name": "500 Resist Wind Box",
+      "kind": "box",
+      "content": 12121,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32176,
+      "name": "1000 Resist Wind Box",
+      "kind": "box",
+      "content": 12121,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32177,
+      "name": "100 Elemental Fire Box",
+      "kind": "box",
+      "content": 12114,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32178,
+      "name": "300 Elemental Fire Box",
+      "kind": "box",
+      "content": 12114,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32179,
+      "name": "500 Elemental Fire Box",
+      "kind": "box",
+      "content": 12114,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32180,
+      "name": "1000 Elemental Fire Box",
+      "kind": "box",
+      "content": 12114,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32181,
+      "name": "100 Elemental Water Box",
+      "kind": "box",
+      "content": 12115,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32182,
+      "name": "300 Elemental Water Box",
+      "kind": "box",
+      "content": 12115,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32183,
+      "name": "500 Elemental Water Box",
+      "kind": "box",
+      "content": 12115,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32184,
+      "name": "1000 Elemental Water Box",
+      "kind": "box",
+      "content": 12115,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32185,
+      "name": "100 Elemental Earth Box",
+      "kind": "box",
+      "content": 12116,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32186,
+      "name": "300 Elemental Earth Box",
+      "kind": "box",
+      "content": 12116,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32187,
+      "name": "500 Elemental Earth Box",
+      "kind": "box",
+      "content": 12116,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32188,
+      "name": "1000 Elemental Earth Box",
+      "kind": "box",
+      "content": 12116,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32189,
+      "name": "100 Elemental Wind Box",
+      "kind": "box",
+      "content": 12117,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32190,
+      "name": "300 Elemental Wind Box",
+      "kind": "box",
+      "content": 12117,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32191,
+      "name": "500 Elemental Wind Box",
+      "kind": "box",
+      "content": 12117,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32192,
+      "name": "1000 Elemental Wind Box",
+      "kind": "box",
+      "content": 12117,
+      "amount": 1000,
+      "icon": 603
+    },
+    {
+      "id": 32193,
+      "name": "100 Aloevera Box",
+      "kind": "box",
+      "content": 606,
+      "amount": 100,
+      "icon": 603
+    },
+    {
+      "id": 32194,
+      "name": "300 Aloevera Box",
+      "kind": "box",
+      "content": 606,
+      "amount": 300,
+      "icon": 603
+    },
+    {
+      "id": 32195,
+      "name": "500 Aloevera Box",
+      "kind": "box",
+      "content": 606,
+      "amount": 500,
+      "icon": 603
+    },
+    {
+      "id": 32196,
+      "name": "1000 Aloevera Box",
+      "kind": "box",
+      "content": 606,
+      "amount": 1000,
+      "icon": 603
+    }
+  ],
+  "pending": [
+    {
+      "id": 6242,
+      "name": "Finn Event Coin",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 7039,
+      "name": "New Year Tag",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 7147,
+      "name": "Jasmine",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 7787,
+      "name": "Love Dad Coupon",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 9501,
+      "name": "FINNRO Credit 5k",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 9502,
+      "name": "FINNRO Credit 10k",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 9503,
+      "name": "FINNRO Credit 20k",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 9504,
+      "name": "FINNRO Credit 30k",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 9505,
+      "name": "FINNRO Credit 50k",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32002,
+      "name": "Change Gender Card",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32003,
+      "name": "Preview Equipment",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32004,
+      "name": "Mushroom Ticket",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32005,
+      "name": "Jackpot Coin",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32006,
+      "name": "Cash Coin",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32007,
+      "name": "Protect Costume Ticket",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32008,
+      "name": "Online Spin Coupon",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32009,
+      "name": "Vote Coin",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 32112,
+      "name": "10 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 32113,
+      "name": "50 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 32114,
+      "name": "100 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 32115,
+      "name": "150 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 32116,
+      "name": "300 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 32117,
+      "name": "500 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 32118,
+      "name": "1000 Oridecon Box",
+      "reason": "contradictory or unsupported box contents"
+    },
+    {
+      "id": 41003,
+      "name": "1 Cash Coin",
+      "reason": "server-specific effect or unsupported definition"
+    },
+    {
+      "id": 61278,
+      "name": "Super Deal Coin",
+      "reason": "server-specific effect or unsupported definition"
+    }
+  ],
+  "cashGroups": {
+    "Food": [
+      12202,
+      12203,
+      12204,
+      12205,
+      12206,
+      12207
+    ],
+    "Scrolls": [
+      12215,
+      12216,
+      12217,
+      12218,
+      12219,
+      12220
+    ],
+    "Utility": [
+      12208,
+      12209,
+      12210,
+      12211,
+      12212,
+      12213,
+      12214
+    ],
+    "Refine": [
+      7619,
+      7620,
+      7621
+    ]
+  }
+}
