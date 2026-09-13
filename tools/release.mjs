@@ -11,7 +11,9 @@ if(crypto.createPublicKey(privateKey).export({type:'spki',format:'pem'}).toStrin
 const assets=[
  ['data/clientinfo.xml','thai-client/data/clientinfo.xml'],
  ['data/sclientinfo.xml','thai-client/data/sclientinfo.xml'],
- ['SystemEN/iteminfo.lua','cash-client/SystemEN/iteminfo.lua'],
+ ['SystemEN/iteminfo.lua','finn-client/SystemEN/iteminfo.lua'],
+ ['rotest-finn-resources.grf','finn-client/rotest-finn-resources.grf'],
+ ['DATA.ini','finn-client/DATA.ini'],
  ['data/luafiles514/lua files/skillinfoz/skillinfo_f.lub','client-2021-overlay/data/luafiles514/lua files/skillinfoz/skillinfo_f.lub'],
  ['opensetupl.exe','client-tools/opensetup/opensetupl.exe'],
  ...['license.txt','license-lua.txt','license-tabicons.txt','readme.txt','privacy.txt'].map(name=>['graphics-setup-docs/'+name,'client-tools/opensetup/doc/'+name])

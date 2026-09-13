@@ -61,7 +61,7 @@ public class Updater
             if(part.Length==0||part.StartsWith('.')||part.EndsWith('.')||part.Trim()!=part||part.Any(c=>c<32||"<>:\"|?*".Contains(c)))throw new InvalidDataException("Unsafe patch path.");
             if(Regex.IsMatch(part.Split('.')[0],"^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$",RegexOptions.IgnoreCase))throw new InvalidDataException("Reserved Windows filename.");
         }
-        if(!(name.StartsWith("data/",StringComparison.Ordinal)||name.StartsWith("System/",StringComparison.Ordinal)||name.StartsWith("SystemEN/",StringComparison.Ordinal)||name.StartsWith("graphics-setup-docs/",StringComparison.Ordinal)||name=="opensetupl.exe"))throw new InvalidDataException("File is outside the allowed ROTest patch scope.");
+        if(!(name.StartsWith("data/",StringComparison.Ordinal)||name.StartsWith("System/",StringComparison.Ordinal)||name.StartsWith("SystemEN/",StringComparison.Ordinal)||name.StartsWith("graphics-setup-docs/",StringComparison.Ordinal)||name=="opensetupl.exe"||name=="DATA.ini"||name=="rotest-finn-resources.grf"))throw new InvalidDataException("File is outside the allowed ROTest patch scope.");
     }
     string Target(string name)
     {
@@ -152,12 +152,27 @@ public class Updater
         {Restore(entry.Directory,entry.Journal,true);return Task.CompletedTask;}
         throw new InvalidOperationException("No completed update is available to restore.");
     }
+    void ValidateExistingDataIndex()
+    {
+        var file=Target("DATA.ini");if(!File.Exists(file))return;
+        const string message="DATA.ini contains an unrecognized archive configuration. No patch files were installed.";
+        if(new FileInfo(file).Length>4096)throw new InvalidDataException(message);
+        var entries=new SortedDictionary<int,string>();bool section=false;
+        foreach(var raw in File.ReadAllLines(file))
+        {
+            var line=raw.Trim().TrimStart('\uFEFF');if(line.Length==0||line.StartsWith(';')||line.StartsWith('#'))continue;
+            if(line.Equals("[Data]",StringComparison.OrdinalIgnoreCase)){if(section)throw new InvalidDataException(message);section=true;continue;}
+            var parts=line.Split('=',2);if(!section||parts.Length!=2||!int.TryParse(parts[0].Trim(),out var index)||index<0||!entries.TryAdd(index,parts[1].Trim().ToLowerInvariant()))throw new InvalidDataException(message);
+        }
+        var names=entries.Values.ToArray();if(!names.SequenceEqual(new[]{"data.grf"})&&!names.SequenceEqual(new[]{"rotest-finn-resources.grf","data.grf"}))throw new InvalidDataException(message);
+    }
     public async Task<UpdateResult> UpdateAsync(byte[] envelope,bool force=false,CancellationToken cancellation=default)
     {
         using var gate=Acquire();using var gameLock=new FileStream(Path.Combine(root,"ROTest.exe"),FileMode.Open,FileAccess.Read,FileShare.None);RecoverInternal();
         var manifest=Verify(envelope);var state=Read<InstalledState>(StateFile);
         if(manifest.Sequence<state.HighestSequence)throw new InvalidDataException("An older release was offered. Update refused.");
         if(!force&&manifest.Sequence<=state.PausedSequence)return new(state.Version,0,true);
+        if(manifest.Files.Any(f=>f.Path=="DATA.ini"))ValidateExistingDataIndex();
         var changed=manifest.Files.Where(f=>!File.Exists(Target(f.Path))||!FileHash(Target(f.Path)).Equals(f.Sha256,StringComparison.OrdinalIgnoreCase)).ToArray();
         if(changed.Length==0){Save(StateFile,new InstalledState{Sequence=manifest.Sequence,HighestSequence=Math.Max(state.HighestSequence,manifest.Sequence),Version=manifest.Version,TransactionId=state.TransactionId,Revision=state.Revision+1});return new(manifest.Version,0);}
         var transaction=Path.Combine(store,"transactions",DateTime.UtcNow.ToString("yyyyMMddHHmmssfff",System.Globalization.CultureInfo.InvariantCulture)+"-"+Guid.NewGuid().ToString("N"));NoLinks(transaction);Directory.CreateDirectory(transaction);

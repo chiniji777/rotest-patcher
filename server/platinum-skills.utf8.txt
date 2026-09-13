@@ -1,0 +1,15 @@
+morocc,157,104,4	script	สกิลเสริม#RT_Platinum	94,{
+	mes "[เรียนสกิลเสริม]";
+	mes "เรียนสกิลเควสต์ตามอาชีพปัจจุบัน รวมอาชีพไฮคลาส";
+	mes "อาชีพ: "+jobname(Class);
+	mes "ไม่ใช้แต้มสกิล ไม่คิด Zeny และไม่รีเซตสกิลเดิม";
+	if (select("เรียนสกิลเสริม:ยกเลิก")==2) close;
+	callfunc "F_GetPlatinumSkills";
+	mes "เรียนสกิลเสริมที่อาชีพนี้รองรับเรียบร้อยแล้ว";
+	mes "เปิดหน้าต่างสกิลเพื่อตรวจสอบได้เลย";
+	close;
+OnInit:
+	if (!checkcell("morocc",157,104,CELL_CHKPASS)) debugmes "ROTEST_PLATINUM BAD_CELL";
+	debugmes "ROTEST_PLATINUM ready";
+	end;
+}

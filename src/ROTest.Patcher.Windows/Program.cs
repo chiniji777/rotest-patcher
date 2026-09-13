@@ -33,7 +33,7 @@ sealed class PatcherWindow:Form
     string publicKey;
     public PatcherWindow()
     {
-        Text="ROTest Patcher 1.1.0 — อัปเดตเกม";Name="ROTestPatcher";ClientSize=new Size(800,520);MinimumSize=new Size(780,500);StartPosition=FormStartPosition.CenterScreen;Font=new Font("Tahoma",12);AutoScaleMode=AutoScaleMode.Dpi;
+        Text="ROTest Patcher 1.2.0 — อัปเดตเกม";Name="ROTestPatcher";ClientSize=new Size(800,520);MinimumSize=new Size(780,500);StartPosition=FormStartPosition.CenterScreen;Font=new Font("Tahoma",12);AutoScaleMode=AutoScaleMode.Dpi;
         var assembly=Assembly.GetExecutingAssembly();using var stream=assembly.GetManifestResourceStream(assembly.GetManifestResourceNames().Single(n=>n.EndsWith("release-public.pem",StringComparison.Ordinal)))!;using var reader=new StreamReader(stream);publicKey=reader.ReadToEnd();
         var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(18),ColumnCount=1,RowCount=7};
         layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,18));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));
@@ -43,7 +43,7 @@ sealed class PatcherWindow:Form
         var buttons=new FlowLayoutPanel{Dock=DockStyle.Top,AutoSize=true};buttons.Controls.AddRange([update,play,graphics,rollback,cancel]);layout.Controls.Add(buttons,0,4);layout.Controls.Add(progress,0,5);layout.Controls.Add(log,0,6);Controls.Add(layout);
         Directory.CreateDirectory(preferences);var saved=Path.Combine(preferences,"folder.txt");
         folder.Text=File.Exists(Path.Combine(AppContext.BaseDirectory,"ROTest.exe"))?AppContext.BaseDirectory:File.Exists(saved)?File.ReadAllText(saved):@"C:\Games\ROTest-rAthena";
-        http.DefaultRequestHeaders.UserAgent.ParseAdd("ROTest-Patcher/1.1.0");
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("ROTest-Patcher/1.2.0");
         choose.Click+=(_,_)=>ChooseFolder();update.Click+=async(_,_)=>await RunUpdate(true);
         cancel.Click+=(_,_)=>operation?.Cancel();play.Click+=(_,_)=>Launch("ROTest.exe");graphics.Click+=(_,_)=>Launch("opensetupl.exe");rollback.Click+=async(_,_)=>await RollBack();
         Shown+=async(_,_)=>{if(File.Exists(Path.Combine(folder.Text,"ROTest.exe")))await RunUpdate(false);else SetStatus("เลือกโฟลเดอร์ ROTest ที่มีไฟล์ ROTest.exe",true);};

@@ -14,6 +14,7 @@ public static class ThaiText
             "An older release was offered. Update refused."=>"พบแพตช์รุ่นเก่ากว่าที่เคยติดตั้ง จึงหยุดอัปเดต",
             "No completed update is available to restore."=>"ยังไม่มีการอัปเดตที่เสร็จแล้วให้กู้คืน",
             "Unsupported update manifest."=>"ไม่รองรับข้อมูลแพตช์ชุดนี้",
+            "DATA.ini contains an unrecognized archive configuration. No patch files were installed."=>"DATA.ini มีรายการ GRF ที่ไม่รู้จัก จึงหยุดโดยไม่ทับการตั้งค่าเดิม กรุณาแจ้ง Feer",
             "Update download is not from the approved release repository."=>"ที่อยู่ดาวน์โหลดไม่ใช่แหล่งแพตช์ที่อนุญาต",
             _=>text
         };

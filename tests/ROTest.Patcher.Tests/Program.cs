@@ -25,6 +25,17 @@ await Test("signed update downloads only changed files and preserves other files
     Assert(result.Changed==1 && f.Read("data/clientinfo.xml")=="new" && f.Read("data/unchanged.txt")=="keep" && f.Requests==1);
     var second=await f.Updater().UpdateAsync(envelope); Assert(second.Changed==0 && f.Requests==1);
 });
+await Test("signed resource archive and DATA index install and rollback together",async f=>{
+ f.Write("DATA.ini","[Data]\n0=data.grf\n");var u=f.Updater();
+ await u.UpdateAsync(f.Envelope(f.File("rotest-finn-resources.grf","signed-resources"),f.File("DATA.ini","[Data]\n0=rotest-finn-resources.grf\n1=data.grf\n")));
+ Assert(f.Read("rotest-finn-resources.grf")=="signed-resources"&&f.Read("DATA.ini").Contains("1=data.grf"));
+ await u.RollbackAsync();Assert(f.Read("DATA.ini")=="[Data]\n0=data.grf\n"&&!File.Exists(Path.Combine(f.Root,"rotest-finn-resources.grf")));
+});
+await Test("resource update preserves an unrecognized archive configuration",async f=>{
+ const string existing="[Data]\n0=owner-custom.grf\n1=data.grf\n";f.Write("DATA.ini",existing);
+ await Reject(()=>f.Updater().UpdateAsync(f.Envelope(f.File("rotest-finn-resources.grf","new-images"),f.File("DATA.ini","[Data]\n0=rotest-finn-resources.grf\n1=data.grf\n"))));
+ Assert(f.Read("DATA.ini")==existing&&f.Requests==0&&!File.Exists(Path.Combine(f.Root,"rotest-finn-resources.grf")));
+});
 await Test("client folder with trailing separator supports the normal launcher location",async f=>{
     var result=await f.Updater(f.Root+Path.DirectorySeparatorChar).UpdateAsync(f.Envelope(f.File("data/a.txt","new")));
     Assert(result.Changed==1&&f.Read("data/a.txt")=="new");
@@ -47,7 +58,7 @@ await Test("cancellation after the first replacement restores all original files
     Assert(cancelled&&f.Read("data/a.txt")=="old-a"&&f.Read("data/b.txt")=="old-b");await f.Updater().RecoverAsync();Assert(f.Read("data/a.txt")=="old-a");
 });
 await Test("unsafe paths and Windows aliases are rejected before downloading",async f=>{
-    foreach(var path in new[]{"../outside.txt","data/../../escape","data/CON.txt","data/a:stream","data/a.","data//a","data\\a","/data/a",".rotest-patcher/state.json","ROTest.exe"})
+    foreach(var path in new[]{"../outside.txt","data/../../escape","data/CON.txt","data/a:stream","data/a.","data//a","data\\a","/data/a",".rotest-patcher/state.json","ROTest.exe","data.grf","other.grf","dinput.ini"})
         await Reject(()=>f.Updater().UpdateAsync(f.Envelope(f.File(path,"x"))));
     Assert(f.Requests==0);
 });
