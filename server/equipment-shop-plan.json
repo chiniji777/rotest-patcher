@@ -1,0 +1,10 @@
+{
+ "scope":"Add categorized purchasable wearables in ROTest; no FINN changes, GVG calibration or equipment effect edits",
+ "approved":"Owner requests all wearable equipment for purchase and categorization",
+ "position":["morocc",163,100],
+ "catalog":{"serverWearables":1961,"offered":1959,"missingClient":[5844,18102],"excludedPetEggs":56,"groups":33,"pages":56,"maximumPerPage":50},
+ "pricing":"Original item database Zeny buy prices; zero/unset buy prices use 100 Zeny in this shop only; normal class/level restrictions remain",
+ "verification":["Six catalog behavior tests","Exact client table index with positive baseline controls","Pinned engine isolated run-once with all shop pages loaded","Hotload only this NPC through authorized test GM; verify menu and sample purchase"],
+ "rollback":"Unload only equipment-shop.txt and restore script import list; preserve purchases/player data",
+ "publicExceptionUnchanged":"2026-10-13T01:25:01+07:00"
+}
