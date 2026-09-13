@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {execFileSync} from 'node:child_process';
 import {prepareItems} from './test-items.mjs';
 const root=process.argv[2];if(!root)throw Error('ROTest source folder required');
 const repo=path.resolve(import.meta.dirname,'..'),out=path.join(repo,'artifacts/test-shops');fs.mkdirSync(out,{recursive:true});
@@ -22,6 +23,17 @@ for(const i of ready){
  const desc=i.kind==='box'?`Contains ${i.amount} x ${standard.get(i.content).match(/^    Name: (.*)$/m)[1]}.`:`Restores ${i.hp} HP / ${i.sp} SP. PVP maps only, not GVG.`;
  client.push(`tbl[${i.id}]={unidentifiedDisplayName=${JSON.stringify(i.name)},identifiedDisplayName=${JSON.stringify(i.name)},unidentifiedResourceName=tbl[${i.icon}].identifiedResourceName,identifiedResourceName=tbl[${i.icon}].identifiedResourceName,unidentifiedDescriptionName={"ROTest test item"},identifiedDescriptionName={${JSON.stringify(desc)},"ROTest reconstruction; FINN parity not verified.",${JSON.stringify(i.kind==='box'?'Store existing contents of this type in Kafra before opening.':'Not consumed outside PVP.')},"Weight: 1"},slotCount=0,ClassNum=0,costume=false}`);
 }
-fs.writeFileSync(path.join(out,'item_db.yml'),database.join('\n')+'\n');fs.writeFileSync(path.join(out,'cash-custom-shops.txt'),script.join('\n')+'\n');fs.writeFileSync(path.join(out,'iteminfo.lua'),Buffer.concat([baseline,Buffer.from(client.join('\n')+'\n')]));
+const translations=new Map([
+ ['Cash Test#RT_Cash','ร้าน Cash#RT_Cash'],['Custom Test#RT_Custom','ร้าน Custom#RT_Custom'],
+ ['[Cash Test Items]','[ร้านไอเทม Cash ทดสอบ]'],['ROTest only. Buy with Zeny, not real money.','เฉพาะ ROTest ใช้ Zeny ซื้อ ไม่ใช้เงินจริง'],
+ ['Standard rAthena effects, not verified FINN balance.','เอฟเฟกต์มาตรฐาน ยังไม่ยืนยันว่าตรง FINN'],['Food +10:Buff Scrolls:Utility:Refine / Siegfried:Cancel','อาหาร +10:ใบสกิลบัฟ:ของอำนวยความสะดวก:แร่และชุบชีวิต:ยกเลิก'],
+ ['[Custom Test Items]','[ร้านไอเทม Custom ทดสอบ]'],['Reconstructed from readable descriptions for ROTest.','สร้างเอฟเฟกต์ตามคำอธิบายสำหรับ ROTest'],['Not a claim of exact FINN server effects.','ยังไม่รับรองว่าเอฟเฟกต์ตรง FINN ทุกอย่าง'],
+ [`Available: ${ready.length}. Withheld: ${pending.length}.`,`มีขาย ${ready.length} รายการ รอข้อมูล ${pending.length} รายการ`],['100 Zeny per item. No real cash or FINN points.','ชิ้นละ 100 Zeny ไม่ใช้เงินจริงหรือแต้ม FINN'],
+ ['Materials:Potions / Bottles:Resist / Converter:PVP Potions:Why some are missing:Cancel','กล่องวัตถุดิบ:กล่องยาและขวด:ยากันธาตุและเปลี่ยนธาตุ:ยา PvP:ทำไมบางชิ้นยังไม่มี:ยกเลิก'],
+ ['Conflicting descriptions, event, vote, real-credit and protection systems are not implemented. No inert placeholders are sold.','ชิ้นที่คำอธิบายขัดกัน หรือใช้ระบบกิจกรรม โหวต เติมเงินจริง และป้องกันตีบวก ยังไม่ทำ จึงไม่ขายของที่ไม่มีเอฟเฟกต์'],
+ ['Store existing contents of this type in Kafra first. Box was not consumed.','เก็บของชนิดเดียวกับในกล่องไว้ที่ Kafra ก่อน กล่องยังไม่ถูกใช้'],['Not enough inventory space or weight. Box was not consumed.','ช่องเก็บของหรือน้ำหนักไม่พอ กล่องยังไม่ถูกใช้'],['PVP-only potion. Item was not consumed.','ยานี้ใช้ได้เฉพาะแมพ PvP ไอเทมยังไม่ถูกใช้']
+]);
+let npc=script.join('\n')+'\n';for(const [from,to]of translations)npc=npc.replaceAll(from,to);
+fs.writeFileSync(path.join(out,'item_db.yml'),database.join('\n')+'\n');fs.writeFileSync(path.join(out,'cash-custom-shops.utf8.txt'),npc);fs.writeFileSync(path.join(out,'cash-custom-shops.txt'),execFileSync('iconv',['-f','UTF-8','-t','CP874'],{input:npc}));fs.writeFileSync(path.join(out,'iteminfo.lua'),Buffer.concat([baseline,Buffer.from(client.join('\n')+'\n')]));
 fs.writeFileSync(path.join(out,'catalog.json'),JSON.stringify({ready,pending,cashGroups},null,2));
 console.log(JSON.stringify({ready:ready.length,pending:pending.length,cashItems:Object.values(cashGroups).flat().length,output:out}));

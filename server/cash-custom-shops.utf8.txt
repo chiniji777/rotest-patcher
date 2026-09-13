@@ -1,8 +1,8 @@
-morocc,151,100,4	script	��ҹ Cash#RT_Cash	86,{
-	mes "[��ҹ���� Cash ���ͺ]";
-	mes "੾�� ROTest �� Zeny ���� ������Թ��ԧ";
-	mes "�Ϳ࿡���ҵðҹ �ѧ����׹�ѹ��ҵç FINN";
-	.@choice=select("����� +10:�ʡ�źѿ:�ͧ�ӹ�¤����дǡ:�����Ъغ���Ե:¡��ԡ");
+morocc,151,100,4	script	ร้าน Cash#RT_Cash	86,{
+	mes "[ร้านไอเทม Cash ทดสอบ]";
+	mes "เฉพาะ ROTest ใช้ Zeny ซื้อ ไม่ใช้เงินจริง";
+	mes "เอฟเฟกต์มาตรฐาน ยังไม่ยืนยันว่าตรง FINN";
+	.@choice=select("อาหาร +10:ใบสกิลบัฟ:ของอำนวยความสะดวก:แร่และชุบชีวิต:ยกเลิก");
 	if (.@choice==5) close;
 	close2;
 	switch (.@choice) {
@@ -20,15 +20,15 @@ OnInit:
 -	shop	RT_Cash_Scrolls	-1,12215:-1,12216:-1,12217:-1,12218:-1,12219:-1,12220:-1
 -	shop	RT_Cash_Utility	-1,12208:-1,12209:-1,12210:-1,12211:-1,12212:-1,12213:-1,12214:-1
 -	shop	RT_Cash_Refine	-1,7619:-1,7620:-1,7621:-1
-morocc,157,100,4	script	��ҹ Custom#RT_Custom	99,{
-	mes "[��ҹ���� Custom ���ͺ]";
-	mes "���ҧ�Ϳ࿡������͸Ժ������Ѻ ROTest";
-	mes "�ѧ����Ѻ�ͧ����Ϳ࿡��ç FINN �ء���ҧ";
-	mes "�բ�� 87 ��¡�� �͢����� 26 ��¡��";
-	mes "����� 100 Zeny ������Թ��ԧ������� FINN";
-	.@choice=select("���ͧ�ѵ�شԺ:���ͧ����ТǴ:�ҡѹ�ҵ��������¹�ҵ�:�� PvP:�����ҧ����ѧ�����:¡��ԡ");
+morocc,157,100,4	script	ร้าน Custom#RT_Custom	99,{
+	mes "[ร้านไอเทม Custom ทดสอบ]";
+	mes "สร้างเอฟเฟกต์ตามคำอธิบายสำหรับ ROTest";
+	mes "ยังไม่รับรองว่าเอฟเฟกต์ตรง FINN ทุกอย่าง";
+	mes "มีขาย 87 รายการ รอข้อมูล 26 รายการ";
+	mes "ชิ้นละ 100 Zeny ไม่ใช้เงินจริงหรือแต้ม FINN";
+	.@choice=select("กล่องวัตถุดิบ:กล่องยาและขวด:ยากันธาตุและเปลี่ยนธาตุ:ยา PvP:ทำไมบางชิ้นยังไม่มี:ยกเลิก");
 	if (.@choice==6) close;
-	if (.@choice==5) {mes "��鹷���͸Ժ�¢Ѵ�ѹ �������к��Ԩ���� ��ǵ ����Թ��ԧ ��л�ͧ�ѹ�պǡ �ѧ���� �֧����¢ͧ���������Ϳ࿡��";close;}
+	if (.@choice==5) {mes "ชิ้นที่คำอธิบายขัดกัน หรือใช้ระบบกิจกรรม โหวต เติมเงินจริง และป้องกันตีบวก ยังไม่ทำ จึงไม่ขายของที่ไม่มีเอฟเฟกต์";close;}
 	close2;
 	switch (.@choice) {
 	case 1: callshop "RT_Custom_0",1; break;
@@ -51,8 +51,8 @@ OnInit:
 function	script	F_RT_OpenBox	{
 	.@box=getarg(0);.@item=getarg(1);.@amount=getarg(2);
 	if (countitem(.@box)<1) return;
-	if (countitem(.@item)>0) {dispbottom "�红ͧ��Դ���ǡѺ㹡��ͧ����� Kafra ��͹ ���ͧ�ѧ���١��";return;}
-	if (!checkweight(.@item,.@amount)) {dispbottom "��ͧ�红ͧ���͹��˹ѡ���� ���ͧ�ѧ���١��";return;}
+	if (countitem(.@item)>0) {dispbottom "เก็บของชนิดเดียวกับในกล่องไว้ที่ Kafra ก่อน กล่องยังไม่ถูกใช้";return;}
+	if (!checkweight(.@item,.@amount)) {dispbottom "ช่องเก็บของหรือน้ำหนักไม่พอ กล่องยังไม่ถูกใช้";return;}
 	delitem .@box,1;
 	getitem .@item,.@amount;
 	return;
@@ -60,7 +60,7 @@ function	script	F_RT_OpenBox	{
 function	script	F_RT_PvpPotion	{
 	.@item=getarg(0);
 	if (countitem(.@item)<1) return;
-	if (!getmapflag(strcharinfo(3),mf_pvp)) {dispbottom "�ҹ������੾����� PvP �����ѧ���١��";return;}
+	if (!getmapflag(strcharinfo(3),mf_pvp)) {dispbottom "ยานี้ใช้ได้เฉพาะแมพ PvP ไอเทมยังไม่ถูกใช้";return;}
 	delitem .@item,1;
 	heal getarg(1),getarg(2);
 	return;
