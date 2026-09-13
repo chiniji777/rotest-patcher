@@ -9,6 +9,8 @@ NPC ทดสอบใหม่อยู่ Morroc บริเวณ 151–163,
 สนาม GvG ใช้ได้ตลอดโดยไม่ขึ้นกับสถานะ WoE
 ข้อความ NPC ใหม่และหน้าจอ Patcher เป็นภาษาไทย ชื่อสกิล/ไอเทม/แมพคงชื่อเดิม
 เมนูเก่าบางส่วนของไคลเอนต์ยังไม่ได้แปลไทย
+แพตช์ 1.1.1 คืน langtype=0: langtype=5 ทำให้ไคลเอนต์ชุดนี้ปิดเมื่อเลือกเซิร์ฟเวอร์
+Patcher ยังคงภาษาไทย; อย่าเปลี่ยน langtype เป็น 5 เพื่อปรับฟอนต์
 
 Windows x64 updater for the existing ROTest-20211103-candidate1 client.
 This repository does not include the full Ragnarok game, user accounts or credentials.
