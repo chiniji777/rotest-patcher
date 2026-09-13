@@ -959,3 +959,244 @@ Body:
       NoConsume: true
     Script: |
       callfunc "F_RT_OpenBox",32196,606,1000;
+
+  - Id: 63501
+    AegisName: RT_FINN_63501
+    Name: "Sheep Cap"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 500
+    Defense: 4
+    Slots: 1
+    Jobs:
+      Knight: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 643
+    Script: |
+      bonus bLuk,1; bonus bStr,1; bonus bCritical,5; if (getskilllv("KN_TWOHANDQUICKEN")>=10) bonus bCritical,5; if (getskilllv("SM_TWOHAND")>=10) bonus bCritAtkRate,50;
+  - Id: 63503
+    AegisName: RT_FINN_63503
+    Name: "Unicorn Helm"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 100
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Crusader: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 60
+    Refineable: true
+    View: 1375
+    Script: |
+      bonus bInt,2; bonus bDex,2; bonus2 bCastrate,"CR_GRANDCROSS",-10; bonus2 bSkillAtk,"CR_GRANDCROSS",20;
+  - Id: 63505
+    AegisName: RT_FINN_63505
+    Name: "Sloth Hat"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 100
+    Defense: 3
+    Slots: 1
+    Jobs:
+      Assassin: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 638
+    Script: |
+      bonus2 bSkillAtk,"AS_SONICBLOW",10; if (getrefine()>=4) bonus2 bSkillAtk,"AS_SONICBLOW",10; if (getrefine()>=5) bonus bAspdRate,10; if (getrefine()>=6) bonus2 bAddClass,Class_Boss,10;
+  - Id: 63506
+    AegisName: RT_FINN_63506
+    Name: "Elemental Boots"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 100
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Mage: true
+      Sage: true
+    Locations:
+      Shoes: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 0
+    Script: |
+      .@rate=5+2*getrefine(); bonus2 bSkillAtk,"MG_FIREBOLT",.@rate; bonus2 bSkillAtk,"MG_COLDBOLT",.@rate; bonus2 bSkillAtk,"MG_LIGHTNINGBOLT",.@rate; bonus2 bSkillAtk,"WZ_EARTHSPIKE",.@rate;
+  - Id: 63507
+    AegisName: RT_FINN_63507
+    Name: "Emerald Ring"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 100
+    Defense: 0
+    Slots: 1
+    Jobs:
+      Archer: true
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 1
+    Refineable: false
+    View: 0
+    Script: |
+      bonus bAgi,1; bonus bDex,1; bonus bFlee,5; bonus2 bSkillAtk,"AC_DOUBLE",BaseLevel/9;
+  - Id: 63508
+    AegisName: RT_FINN_63508
+    Name: "Chung Hairpin"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 500
+    Defense: 4
+    Slots: 1
+    Jobs:
+      Blacksmith: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 583
+    Script: |
+      bonus bLuk,3; bonus bAspdRate,5; if (getskilllv("BS_ADRENALINE")>=5) bonus bAspd,2; if (getskilllv("MC_MAMMONITE")>=10) bonus bBaseAtk,20; if (getskilllv("BS_WEAPONRESEARCH")>=10) bonus bCritical,5;
+  - Id: 63509
+    AegisName: RT_FINN_63509
+    Name: "Magical Feather"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 700
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Acolyte: true
+      Priest: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 1
+    Refineable: true
+    View: 1279
+    Script: |
+      bonus bInt,5; bonus2 bCastrate,"AL_HOLYLIGHT",-10; bonus2 bSkillAtk,"AL_HOLYLIGHT",BaseLevel; bonus2 bMagicAddSize,Size_All,25;
+  - Id: 63510
+    AegisName: RT_FINN_63510
+    Name: "Ghostring Balloon"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 100
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Mage: true
+      Sage: true
+      Wizard: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 60
+    Refineable: true
+    View: 1436
+    Script: |
+      bonus bInt,5; bonus2 bSkillAtk,"MG_NAPALMBEAT",50; bonus2 bSkillAtk,"MG_SOULSTRIKE",20; if (getskilllv("MG_SOULSTRIKE")>=10) bonus4 bAutoSpellOnSkill,"MG_SOULSTRIKE","MG_NAPALMBEAT",10,500;
+  - Id: 63513
+    AegisName: RT_FINN_63513
+    Name: "Raid Glove"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 700
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Rogue: true
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 1
+    Refineable: false
+    View: 0
+    Script: |
+      bonus bStr,2; bonus2 bSkillAtk,"RG_RAID",15;
+  - Id: 63514
+    AegisName: RT_FINN_63514
+    Name: "Bison Horn X"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 700
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Monk: true
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 1
+    Refineable: false
+    View: 0
+    Script: |
+      bonus bStr,2; bonus bDex,1; bonus2 bSkillAtk,"MO_FINGEROFFENSIVE",20;
+  - Id: 63521
+    AegisName: RT_FINN_63521
+    Name: "Niflheim Bunny Hat"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 50
+    Defense: 0
+    Slots: 1
+    Jobs:
+      All: true
+    Locations:
+      Head_Top: true
+    EquipLevelMin: 30
+    Refineable: true
+    View: 1285
+    Script: |
+      bonus bInt,3; bonus bDex,3; bonus bMatkRate,2; if (getrefine()>=5) bonus bMatkRate,3; if (getrefine()>=7) bonus bMatkRate,3; if (getrefine()>=9) bonus bMatkRate,5;
+  - Id: 63526
+    AegisName: RT_FINN_63526
+    Name: "Alchemy Glove"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 100
+    Defense: 1
+    Slots: 1
+    Jobs:
+      Merchant: true
+      Alchemist: true
+    Locations:
+      Both_Accessory: true
+    EquipLevelMin: 99
+    Refineable: false
+    View: 0
+    Script: |
+      bonus bInt,2; bonus bDex,1; bonus bLongAtkRate,5; if (BaseLevel>=99) bonus2 bSkillAtk,"CR_ACIDDEMONSTRATION",20;
+  - Id: 63528
+    AegisName: RT_FINN_63528
+    Name: "Goibne's Greaves"
+    Type: Armor
+    Buy: 1000
+    Sell: 0
+    Weight: 700
+    Defense: 4
+    Slots: 1
+    Jobs:
+      Assassin: true
+      Thief: true
+    Locations:
+      Shoes: true
+    EquipLevelMin: 70
+    Refineable: true
+    View: 0
+    Script: |
+      bonus bMaxHPrate,5; bonus bMaxSPrate,5; if (getskilllv("AS_POISONREACT")>=10) bonus bBaseAtk,30; if (getskilllv("ASC_METEORASSAULT")>=10) bonus2 bSkillAtk,"ASC_BREAKER",25;

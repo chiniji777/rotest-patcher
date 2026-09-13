@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {classifyCard} from './card-catalog.mjs';
+const card={AegisName:'Poring_Card',Name:'Poring Card'};
+test('ordinary card stays ordinary when also dropped by event boss',()=>assert.equal(classifyCard(card,[{AegisName:'PORING',Name:'Poring',Drops:[{Item:'Poring_Card',Rate:1}]},{Name:'Event King',Class:'Boss',Modes:{Mvp:true},Drops:[{Item:'Poring_Card',Rate:1}]}]),'normal'));
+test('MVP and miniboss use actual monster flags',()=>{assert.equal(classifyCard({AegisName:'Baphomet_Card',Name:'Baphomet Card'},[{AegisName:'BAPHOMET',Class:'Boss',Modes:{Mvp:true},Drops:[{Item:'Baphomet_Card',Rate:1}]}]),'mvp');assert.equal(classifyCard({AegisName:'Angeling_Card',Name:'Angeling Card'},[{AegisName:'ANGELING',Class:'Boss',Drops:[{Item:'Angeling_Card',Rate:1}]}]),'mini');});
+test('no source and zero rate remain special',()=>{assert.equal(classifyCard(card,[]),'special');assert.equal(classifyCard(card,[{AegisName:'PORING',Drops:[{Item:'Poring_Card',Rate:0}]}]),'special');});
+test('ambiguous mixed drop sources are not guessed',()=>assert.equal(classifyCard({AegisName:'X_Card',Name:'X Card'},[{Name:'Different',Drops:[{Item:'X_Card',Rate:1}]},{Name:'Another',Class:'Boss',Drops:[{Item:'X_Card',Rate:1}]}]),'special'));

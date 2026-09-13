@@ -1,0 +1,11 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {validateWearable} from './finn-wearables.mjs';
+const recipe={id:63514,name:'Bison Horn X',template:2702,location:'Both_Accessory',defense:1,weight:700,level:1,jobs:['Monk'],refine:false,script:'bonus bStr,2;'};
+const source={id:63514,name:'Bison Horn X',slots:1,view:0,resourceHex:'aabb'};
+const context={serverIds:new Set([2702]),client:new Map([[2702,{view:0,resourceHex:'aabb'}]]),bonuses:new Set(['bStr']),skills:new Set()};
+test('valid item retains source id and slots',()=>{const r=validateWearable(recipe,source,context);assert.equal(r.id,63514);assert.equal(r.slots,1);});
+test('never overwrites a server item',()=>assert.throws(()=>validateWearable(recipe,source,{...context,serverIds:new Set([63514])}),/collision/));
+test('visual template must match resource and view',()=>assert.throws(()=>validateWearable(recipe,source,{...context,client:new Map([[2702,{view:1,resourceHex:'aabb'}]])}),/visual/));
+test('renamed or missing source item is rejected',()=>{assert.throws(()=>validateWearable(recipe,{...source,name:'Other'},context),/source/);assert.throws(()=>validateWearable(recipe,null,context),/source/);});
+test('undefined engine bonus is rejected before deployment',()=>assert.throws(()=>validateWearable({...recipe,script:'bonus2 bSkillCast,"AL_HOLYLIGHT",-10;'},source,context),/bonus/));
+test('unknown skill is rejected and known skill accepted',()=>{assert.throws(()=>validateWearable({...recipe,script:'bonus bStr,2; getskilllv("NOT_A_SKILL");'},source,context),/skill/);assert.equal(validateWearable({...recipe,script:'bonus bStr,getskilllv("AL_HEAL");'},source,{...context,skills:new Set(['AL_HEAL'])}).id,63514);});

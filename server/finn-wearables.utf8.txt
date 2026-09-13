@@ -1,0 +1,19 @@
+morocc,166,100,4	script	ร้าน FINN ทดสอบ#RT_FINN	99,{
+	mes "[อุปกรณ์ FINN ฉบับทดสอบ]";
+	mes "มี 13 ชิ้น จำลองจากค่าที่ระบุชัดในไฟล์เกม";
+	mes "ยังไม่รับรองว่าดาเมจตรงเซิร์ฟเวอร์ FINN จริง";
+	mes "ชิ้นละ 1,000 Zeny ไม่ใช้เงินจริง";
+	mes "ของที่โอกาสออกสกิลหรือสูตรไม่ครบ ยังไม่เปิดขาย";
+	.@choice=select("หมวก:รองเท้า:เครื่องประดับ:ยกเลิก");
+	if (.@choice==4) close;
+	close2;
+	callshop "RT_FINN_"+(.@choice-1),1;
+	end;
+OnInit:
+	if (!checkcell("morocc",166,100,CELL_CHKPASS)) debugmes "ROTEST_FINN BAD_CELL";
+	debugmes "ROTEST_FINN items=13";
+	end;
+}
+-	shop	RT_FINN_0	-1,63501:1000,63503:1000,63505:1000,63508:1000,63509:1000,63510:1000,63521:1000
+-	shop	RT_FINN_1	-1,63506:1000,63528:1000
+-	shop	RT_FINN_2	-1,63507:1000,63513:1000,63514:1000,63526:1000

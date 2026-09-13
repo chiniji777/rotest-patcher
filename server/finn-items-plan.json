@@ -1,0 +1,12 @@
+{
+ "approval":"Owner approved a test reconstruction of explicitly documented FINN equipment effects, while holding incomplete effects",
+ "scope":"13 FINN test wearables in a separate NPC at Morocc166,100; existing1959gear shop preserved; requested538standardcards at169,100",
+ "notClaimed":"Exact FINN combat parity, complete FINN custom catalog, or every skill/refine/proc case tested",
+ "defaults":"Normal rAthena refine/class-inheritance mechanics where source does not explicitly define them; no inherited template item bonuses",
+ "data":"Raw FINN client description hash pinned; templates must match actual resource bytes and view ID; server bonus andskill symbols validated",
+ "safety":"Source ID collisions rejected;15ambiguous/unavailablewearables in this635xxbatch held; no wallet/realcash/FINNruntime changes",
+ "deployment":"Merge13definitions with previous87customdefinitions; @reloaditemdb on ROTest; load only newNPCfiles; clientpatch needs gameclosed",
+ "verification":["Source description review","Guard tests","Merged100uniqueIDs","Isolatedengine startup","Client13item definitions and prioritems","Live sample purchase,equip andunequip","Signedpatch andWindows hash check"],
+ "rollback":"Keep acquireditem definitions to avoid orphan inventory; unload newshops andrestore priorclientbackup only after acquisition accounting. Never delete playeritems.",
+ "remaining":"All-refine/skill-level/autocast matrices and otherFINN custom gear await later verified batches"
+}

@@ -4,7 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {prepareItems} from './test-items.mjs';
 const root=process.argv[2];if(!root)throw Error('ROTest source folder required');
 const repo=path.resolve(import.meta.dirname,'..'),out=path.join(repo,'artifacts/test-shops');fs.mkdirSync(out,{recursive:true});
-const standard=new Map();for(const file of fs.readdirSync(path.join(root,'finn-reference/standard-pre-re'))){for(const m of fs.readFileSync(path.join(root,'finn-reference/standard-pre-re',file),'utf8').matchAll(/^  - Id: (\d+)\n([\s\S]*?)(?=^  - Id:|$(?![\s\S]))/gm))standard.set(+m[1],m[2]);}
+const standard=new Map();for(const file of fs.readdirSync(path.join(root,'finn-reference/standard-pre-re')).filter(f=>/^item_db_.*\.yml$/.test(f))){for(const m of fs.readFileSync(path.join(root,'finn-reference/standard-pre-re',file),'utf8').matchAll(/^  - Id: (\d+)\n([\s\S]*?)(?=^  - Id:|$(?![\s\S]))/gm))standard.set(+m[1],m[2]);}
 const baseline=fs.readFileSync(path.join(root,'client-2021-overlay/SystemEN/iteminfo.lua'));
 const clientIds=new Set([...baseline.toString('latin1').matchAll(/^\s*\[(\d+)\]\s*=\s*\{/gm)].map(m=>+m[1]));
 const inventory=JSON.parse(fs.readFileSync(path.join(root,'finn-reference/report/FINN-item-inventory.json')));
